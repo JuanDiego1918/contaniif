@@ -4,12 +4,17 @@ public class NumeroVo {
 
 
     private int numeroPagina;
-
-    public NumeroVo(int numeroPagina) {
-        this.numeroPagina = numeroPagina;
-    }
+    private String color;
 
     public NumeroVo() {
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public int getNumeroPagina() {

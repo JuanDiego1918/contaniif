@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -31,13 +32,15 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-import com.example.juandiego.contaniif.R;
+;
+import com.example.juandiego.contaniif.adapter.PaginacionNumeroAdapter;
 import com.example.juandiego.contaniif.adapter.PreguntasAdapter;
 import com.example.juandiego.contaniif.adapter.PreguntasImagenesAdapter;
 import com.example.juandiego.contaniif.entidades.GestionPreguntas;
+import com.example.juandiego.contaniif.entidades.NumeroVo;
 import com.example.juandiego.contaniif.entidades.PreguntasVo;
 import com.example.juandiego.contaniif.entidades.RecyclerViewOnClickListener;
+import com.example.juandiego.contaniif.entidades.VolleySingleton;
 import com.example.juandiego.contaniif.interfaces.Puente;
 
 import org.json.JSONArray;
@@ -132,6 +135,11 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
     ProgressBar mProgressBar;
     long mInitialTime;
 
+    ArrayList<NumeroVo> listanumero;
+    NumeroVo miNumeroVo;
+    int numero=0;
+    RecyclerView miRecyclerNumero;
+
     ArrayList<String> listaImagenes;
     PreguntasAdapter adapter;
     PreguntasImagenesAdapter adapter2;
@@ -203,6 +211,10 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
         btnContinuar= vista.findViewById(R.id.btnContinuar);
         btnContinuar.setVisibility(View.INVISIBLE);
 
+
+        miRecyclerNumero=vista.findViewById(R.id.recyclerNumeros);
+        miRecyclerNumero.setLayoutManager(new LinearLayoutManager(getContext()));
+        miRecyclerNumero.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayout.HORIZONTAL,false));
         mProgressBar=(ProgressBar)vista.findViewById(R.id.progressbar);
         mProgressBar.setProgress(i);
 
@@ -217,12 +229,21 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
                 }
             }
         });
+        listanumero=new ArrayList<>();
+        for (int i=1;i<11;i++){
+            miNumeroVo=new NumeroVo();
+            miNumeroVo.setNumeroPagina(i);
+            listanumero.add(miNumeroVo);
+        }
+
+        PaginacionNumeroAdapter miNumeroAdapter=new PaginacionNumeroAdapter(listanumero,getContext());
+        miRecyclerNumero.setAdapter(miNumeroAdapter);
 
         pregunta = vista.findViewById(R.id.campoPregunta);
         recyclerViewUsuarios = vista.findViewById(R.id.recyclerPreguntasss);
         recyclerViewUsuarios.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerViewUsuarios.setHasFixedSize(true);
-        request = Volley.newRequestQueue(getContext());
+        //request = Volley.newRequestQueue(getContext());
 
 
         cargarWebservices();
@@ -278,7 +299,8 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
         String ip=getContext().getString(R.string.ip);
         String url = "http://"+ip+"/apolunios/wsConsultaPreguntaPrueba2.php";
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
-        request.add(jsonObjectRequest);
+//        request.add(jsonObjectRequest);
+        VolleySingleton.getIntanciaVolley(getContext()).addToRequestQueue(jsonObjectRequest);
     }
 
 
@@ -330,6 +352,11 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
                 getFragmentManager().beginTransaction().replace(R.id.content_main,fragment).commit();
                 btnContinuar.setVisibility(View.INVISIBLE);
                 btnContinuar2.setVisibility(View.VISIBLE);
+
+                listanumero.get(numero).setColor("#e91e63");
+                numero++;
+                PaginacionNumeroAdapter miNumeroAdapter=new PaginacionNumeroAdapter(listanumero,getContext());
+                miRecyclerNumero.setAdapter(miNumeroAdapter);
             }
         });
 
@@ -399,7 +426,7 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
                 preguntas.setRespuesta(jsonObject.getString("respuesta"));
                 preguntas.setRetobuena(jsonObject.getString("retrobuena"));
                 preguntas.setRetromala(jsonObject.getString("retromala"));
-                //preguntas.setImagenn(jsonObject.getString("opcion"));
+                preguntas.setRutaImagen(jsonObject.getString("opcion"));
 
                 listaImagenes.add(preguntas.getOpciones());
                 //Toast.makeText(getContext(),"lista url" + listaImagenes,Toast.LENGTH_LONG).show();
@@ -439,27 +466,6 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
             adapter2 = new PreguntasImagenesAdapter(listaPreguntas,getContext());
             recyclerViewUsuarios.setAdapter(adapter2);
 
-
-            //
-
-            String ip=getContext().getString(R.string.ip);
-            String urlImagen="http://"+ip+getUrlImagen();
-            Toast.makeText(getContext(),"Error al cargar la imagen" + getUrlImagen(), Toast.LENGTH_SHORT).show();
-            ImageRequest imageRequest=new ImageRequest(urlImagen, new Response.Listener<Bitmap>() {
-                @Override
-                public void onResponse(Bitmap response) {
-                   // adapter2.setResponse(response);
-                }
-            }, 0, 0, ImageView.ScaleType.CENTER, null, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(getContext(),"Error al cargar la imagen", Toast.LENGTH_SHORT).show();
-                }
-            });
-            request.add(imageRequest);
-
-
-            //
 
 
             recyclerViewUsuarios.addOnItemTouchListener(new RecyclerViewOnClickListener(getContext(), new RecyclerViewOnClickListener.OnItemClickListener() {

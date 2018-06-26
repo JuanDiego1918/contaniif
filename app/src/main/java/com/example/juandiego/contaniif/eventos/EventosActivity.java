@@ -137,7 +137,7 @@ public class EventosActivity extends AppCompatActivity implements Response.Liste
             // Set up the ViewPager with the sections adapter.
             mViewPager.setAdapter(mSectionsPagerAdapter);
 
-            miNumeroAdapter=new PaginacionNumeroAdapter(listaNumero);
+            miNumeroAdapter=new PaginacionNumeroAdapter(listaNumero,getApplicationContext());
             recyclerViewNumero.setAdapter(miNumeroAdapter);
         } catch (JSONException e) {
             e.printStackTrace();
