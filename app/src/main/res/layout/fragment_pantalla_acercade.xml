@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/degradado"
+    android:paddingLeft="19dp"
+    android:paddingRight="19dp"
+    tools:context=".fragmeents_acercade.Pantalla_acercade">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:layout_marginTop="12dp"
+    android:background="@drawable/card_principal"/>
+
+    </RelativeLayout>
+
+
+
+
+
+</FrameLayout>

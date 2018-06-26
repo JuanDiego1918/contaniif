@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/degradado"
+    android:paddingRight="12dp"
+    android:paddingLeft="12dp"
+    tools:context=".fragmeents_acercade.AcercaDeNosotros">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="322dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/txt1Nosotros"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/card_principal" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="66dp"
+            android:layout_height="77dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="67dp"
+            android:src="@drawable/instruuno" />
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="66dp"
+            android:layout_height="77dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="138dp"
+            android:src="@drawable/instrudos" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="66dp"
+            android:layout_height="77dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="214dp"
+            android:src="@drawable/instrutres" />
+
+
+        <ImageView
+            android:id="@+id/img4Nosotros"
+            android:layout_width="match_parent"
+
+            android:layout_height="44dp"
+            android:layout_marginTop="392dp"
+            android:background="@drawable/card_principal" />
+
+
+        <ImageView
+            android:id="@+id/img3Nosotro"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/card_principal" />
+
+        <ImageView
+            android:id="@+id/img2Nosotros"
+            android:layout_width="46dp"
+            android:layout_height="54dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="12dp"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/iconomisionyvision" />
+
+        <ImageView
+            android:id="@+id/img1Nosotrorrrs"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="399dp"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/iconoacercade1" />
+
+
+        <TextView
+            android:id="@+id/txt2Nosotros"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/txt1Nosotros"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="8.5dp"
+            android:text="Misión y visión"
+            android:textColor="#FFF"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/txt1Nosotros"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="18dp"
+            android:layout_toEndOf="@+id/img2Nosotros"
+            android:text="Informacion App"
+            android:textColor="#FFF"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="173dp"
+            android:layout_height="54dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/textView3"
+            android:layout_marginTop="152dp"
+            android:inputType="textMultiLine"
+            android:text="Angela Rosa Amaya Ortiz, Contadora Publica, Especialista en Revisoría Fiscal y auditoria"
+            android:textAlignment="center"
+            android:textColor="#FFF"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="173dp"
+            android:layout_height="54dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/textView2"
+            android:layout_marginBottom="171dp"
+            android:inputType="textMultiLine"
+            android:text="Angelica Maria Medina
+Contadora Pública, egresada de la Universidad Libre de Pereira"
+            android:textAlignment="center"
+            android:textColor="#FFF"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="173dp"
+            android:layout_height="54dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="77dp"
+            android:inputType="textMultiLine"
+            android:text="Sonia Cenelia León Forero Contadora Pública Magister en Educación"
+            android:textAlignment="center"
+            android:textColor="#FFF"
+            android:textSize="12dp" />
+
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/img2Nosotros"
+            android:layout_marginBottom="132dp"
+            android:text="Húgo Hernán Henao Hernandez - Administrador"
+            android:textAlignment="center"
+            android:textColor="#FFF"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/textViewr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/img2Nosotros"
+            android:layout_below="@+id/textView6"
+            android:layout_marginTop="-131dp"
+            android:text="Victor Manuel Garcia Hurtado - Programador"
+            android:textAlignment="center"
+            android:textColor="#FFF"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/textViewre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/img2Nosotros"
+            android:layout_below="@+id/textViewr"
+            android:text="Gian Carlos Martinez Quintero- Diseñador grafico"
+            android:textAlignment="center"
+            android:textColor="#FFF"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/textViewdere"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/img2Nosotros"
+            android:layout_below="@+id/textViewre"
+            android:text="Miryam Montenegro - Contabilidad y Finanzas"
+            android:textAlignment="center"
+            android:textColor="#FFF"
+            android:textSize="12dp" />
+
+    </RelativeLayout>
+
+</FrameLayout>

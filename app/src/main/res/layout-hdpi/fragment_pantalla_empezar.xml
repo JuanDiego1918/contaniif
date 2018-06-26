@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/fondo"
+    android:id="@+id/containaer"
+    android:layout_height="match_parent"
+    tools:context=".fragments.Pantalla_empezar">
+
+
+    <ImageView
+        android:layout_width="22dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="77dp"
+        android:layout_height="22dp"
+        android:background="@drawable/reloj"/>
+
+    <ProgressBar
+        android:layout_marginLeft="109dp"
+        android:layout_marginRight="50dp"
+        android:id="@+id/progressbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="18dp"
+        android:max="100"
+        android:progress="0"
+        android:progressDrawable="@drawable/colores" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="40sp"
+        android:gravity="center_horizontal">
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:id="@+id/recyclerNumeros">
+        </android.support.v7.widget.RecyclerView>
+
+
+        <!-- <fragment
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:name="com.example.victormanuel.apolunios.fragments.NumeroPreguntas">
+         </fragment>-->
+
+     </LinearLayout>
+
+
+     <ScrollView
+         android:id="@+id/scroll"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:minHeight="58dp"
+         android:layout_alignParentStart="true"
+         android:layout_marginTop="66dp">
+
+         <TextView
+             android:id="@+id/campoPregunta"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:gravity="center_vertical"
+             android:layout_alignParentTop="true"
+             android:layout_centerHorizontal="true"
+             android:layout_marginBottom="7dp"
+             android:inputType="textMultiLine"
+             android:paddingLeft="12dp"
+             android:paddingRight="12dp"
+             android:textColor="#000"
+             android:textSize="18sp" />
+
+     </ScrollView>
+
+     <android.support.v7.widget.RecyclerView
+         android:id="@+id/recyclerPreguntasss"
+         android:layout_width="match_parent"
+         android:layout_height="279dp"
+         android:layout_alignParentStart="true"
+         android:layout_below="@+id/scroll"
+         android:paddingBottom="22dp"
+         android:tooltipText="Hola recycler">
+
+     </android.support.v7.widget.RecyclerView>
+
+     <Button
+         android:layout_width="match_parent"
+         android:layout_height="52dp"
+         android:textColor="#FFF"
+         android:id="@+id/btnContinuar"
+         android:layout_alignParentBottom="true"
+         android:text="continuar"
+         android:layout_alignParentStart="true"
+         android:background="@color/colorBotones" />
+
+     <Button
+         android:layout_width="match_parent"
+         android:layout_height="52dp"
+         android:textColor="#FFF"
+         android:id="@+id/btnContinuar2"
+         android:layout_alignParentBottom="true"
+         android:text="continuar"
+         android:layout_alignParentStart="true"
+         android:background="#D9D9D9" />
+ </RelativeLayout>

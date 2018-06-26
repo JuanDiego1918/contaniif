@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="300dp"
+    android:layout_marginBottom="63dp"
+    android:layout_height="375dp"
+    android:background="@android:color/transparent"
+    android:padding="5dp"
+    android:layout_gravity="center">
+
+    <RelativeLayout
+        android:layout_width="250dp"
+        android:layout_height="275dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="34dp"
+        android:background="@color/white">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="149dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="38dp">
+
+            <TextView
+                android:id="@+id/campoRetroMala"
+                android:layout_width="match_parent"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:paddingTop="2dp"
+                android:paddingBottom="3dp"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="RETRO MALA"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+        </ScrollView>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="29dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center_horizontal"
+            android:background="#E7583C"
+            android:gravity="center"
+            android:text="INCORRECTO"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnRetroMala"
+            android:layout_width="146dp"
+            android:layout_height="28dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginEnd="17dp"
+            android:background="@drawable/borde_redondo_boton"
+            android:text="Continuar"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="94dp"
+        android:layout_height="133dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="-17dp"
+        android:layout_gravity="center"
+        android:src="@drawable/respuestaincorrecta" />
+
+
+    <ImageView
+        android:id="@+id/circuloPuntajeIncorrecto"
+        android:layout_width="83dp"
+        android:layout_height="69dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:layout_marginEnd="-5dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/estrella" />
+
+    <RelativeLayout
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        android:layout_marginRight="7dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="33dp">
+
+        <TextView
+            android:paddingTop="16dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textSize="23sp"
+            android:id="@+id/campoPuntajeIncorrecto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="+0"
+            android:textColor="#000"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>

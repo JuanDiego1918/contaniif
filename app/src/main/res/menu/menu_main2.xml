@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.victormanuel.apolunios.eventos.Main2Activity">
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@drawable/atras"
+        android:title="Cerrar"
+        app:showAsAction="ifRoom"/>
+</menu>

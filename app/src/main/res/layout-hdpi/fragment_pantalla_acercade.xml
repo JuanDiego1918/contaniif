@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingRight="12dp"
+    android:paddingLeft="12dp"
+    tools:context=".fragmeents_acercade.Pantalla_acercade"
+    android:background="@drawable/degradado">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="324dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="12dp"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/card_principal" />
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:id="@+id/misionVisionFondo"
+            android:layout_marginTop="392dp"
+            android:background="@drawable/card_principal"/>
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:id="@+id/acercaNosotrosFondo"
+            android:layout_height="44dp"
+            android:layout_marginTop="342dp"
+            android:background="@drawable/card_principal"/>
+
+        <ImageView
+            android:id="@+id/imagenMision"
+            android:layout_width="46dp"
+            android:layout_height="54dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="12dp"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/iconomisionyvision" />
+
+        <ImageView
+            android:id="@+id/imagenAcercaNosotros"
+            android:layout_width="36dp"
+            android:layout_height="54dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="62dp"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/iconoequipodesarrollo" />
+
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="68dp"
+            android:layout_height="54dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="103dp"
+            android:layout_marginTop="25dp"
+            android:src="@drawable/iconoacercade1" />
+<ScrollView
+    android:layout_width="272dp"
+    android:layout_marginLeft="10dp"
+    android:layout_height="219dp"
+    android:scrollbarThumbVertical="@drawable/scroll_predesing"
+    android:layout_marginTop="88dp">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="250dp"
+        android:layout_height="155dp"
+        android:inputType="textMultiLine"
+        android:scrollbarThumbVertical="@drawable/scroll_predesing"
+        android:layout_alignParentTop="true"
+        android:textColor="#FFF"
+        android:textSize="19sp"
+        android:textAlignment="center"
+        android:layout_toEndOf="@+id/imagenMision"
+        android:text='El "Acerca del semillero de investicación" es la paginas mas potente para llegar a su público objetivo. Es crucial que usted construya una agina de "Aceerca de Nosotros" en la que introduzca su negocio a sus clientes potenciales. Tener una buena pagina "Acerca de nosotrsos" es un componente vital para atraer a nuevos usuarios.' />
+</ScrollView>
+
+        <TextView
+            android:id="@+id/txtMisionVision"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/txtAcercade"
+            android:layout_marginBottom="30dp"
+            android:text="Misión y visión"
+            android:textColor="#FFF"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/txtAcercade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:textSize="15sp"
+            android:textColor="#FFF"
+            android:layout_marginBottom="80dp"
+            android:layout_marginStart="60dp"
+            android:text="Acerca de nosotros" />
+
+
+    </RelativeLayout>
+
+</FrameLayout>

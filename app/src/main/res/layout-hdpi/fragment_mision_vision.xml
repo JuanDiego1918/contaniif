@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/degradado"
+    android:paddingRight="12dp"
+    android:paddingLeft="12dp"
+    android:layout_height="match_parent"
+    tools:context=".fragmeents_acercade.MisionVision">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="328dp"
+            android:layout_marginTop="112dp"
+            android:background="@drawable/card_principal" />
+
+        <ScrollView
+            android:layout_width="271dp"
+            android:layout_marginLeft="10dp"
+            android:layout_height="310dp"
+            android:scrollbarThumbVertical="@drawable/scroll_predesing"
+            android:layout_marginTop="118dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="122dp"
+                    android:layout_height="wrap_content"
+                    android:text="Misión"
+                    android:textColor="#FFF"
+                    android:textSize="17dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"/>
+
+                <TextView
+                    android:layout_width="242dp"
+                    android:layout_height="wrap_content"
+                    android:text="El Grupo de Investigación sobre Política Exterior Peruana (GIPEP) busca profundizar en el análisis académico, teórico-práctico, acerca de esta política pública, con el objetivo de comprender las decisiones que adopta nuestro país, tanto a nivel regional como extrarregional."
+                    android:textColor="#FFF"
+                    android:textSize="15dp"
+                    android:inputType="textMultiLine"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="9dp"/>
+
+                <TextView
+                    android:layout_width="122dp"
+                    android:layout_height="wrap_content"
+                    android:text="Visión"
+                    android:textColor="#FFF"
+                    android:textSize="17dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"/>
+
+                <TextView
+                    android:layout_width="242dp"
+                    android:layout_height="wrap_content"
+                    android:text="Posicionar al GIPEP y la Escuela de Gobierno y Políticas Públicas como referentes en el campo de la política exterior, buscando ahondar en los temas relevantes para esta política nacional, así como la necesidad de albergar espacios de discusión dentro de la universidad sobre la política exterior peruana en la Pontificia Universidad Católica del Perú.."
+                    android:textColor="#FFF"
+                    android:textSize="15dp"
+                    android:inputType="textMultiLine"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="9dp"/>
+
+                <TextView
+                    android:layout_width="122dp"
+                    android:layout_height="wrap_content"
+                    android:text="Objetivo"
+                    android:textColor="#FFF"
+                    android:textSize="17dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"/>
+
+                <TextView
+                    android:layout_width="242dp"
+                    android:layout_height="wrap_content"
+                    android:text="Articular un espacio de discusión y análisis acerca de nuestra política exterior, constituido por profesores y alumnos de Ciencia Política de pregrado, maestría y doctorado.
+Desarrollar investigaciones que contribuyan a la comprensión de nuestra política exterior, de forma tal se pueda incrementar el debate y la reflexión acerca de este tema.
+Fortalecer las capacidades y habilidades de investigación de los alumnos de pregrado y posgrado que integran este grupo.
+Promover la divulgación de investigaciones en materia de política exterior, mediante la participación en eventos académicos y la publicación de resultados en revistas científicas nacionales e internacionales.
+Posicionar a la Escuela de Gobierno y Políticas Públicas de la PUCP como un referente en política exterior peruana.
+"
+                    android:textColor="#FFF"
+                    android:textSize="15dp"
+                    android:inputType="textMultiLine"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="9dp"/>
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:id="@+id/img4Mision"
+            android:layout_marginTop="59dp"
+            android:background="@drawable/card_principal"/>
+
+
+        <ImageView
+            android:id="@+id/img3Mision"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="7dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/card_principal" />
+
+        <ImageView
+            android:id="@+id/img2Mision"
+            android:layout_width="46dp"
+            android:layout_height="54dp"
+            android:layout_alignBottom="@+id/img4Mision"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/iconoequipodesarrollo" />
+
+        <ImageView
+            android:id="@+id/img1Mision"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/iconoacercade1" />
+
+
+        <TextView
+            android:id="@+id/txt2Mision"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/txt1mision"
+            android:layout_marginTop="69dp"
+            android:text="Acerca de nosotros"
+            android:textColor="#FFF"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/txt1mision"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_marginLeft="5dp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/img2Mision"
+            android:text="Informacion App"
+            android:textColor="#FFF"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
+
+
+</FrameLayout>

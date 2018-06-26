@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingLeft="10dp"
+    android:paddingTop="-15dp"
+    android:paddingRight="10dp"
+    android:background="@drawable/degradado"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/contenedor">
+
+    <ImageView
+        android:layout_width="338dp"
+        android:layout_height="110dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/card_principal" />
+
+    <LinearLayout
+        android:layout_width="226dp"
+       android:layout_height="5dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginLeft="32dp"
+        android:background="@color/colorAccent">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="146dp"
+        android:layout_height="5dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginLeft="92dp"
+        android:background="@drawable/bordelayout">
+
+    </LinearLayout>
+
+    <!--ITEMS-->
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="44dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="55dp"
+        android:background="@drawable/copa" />
+
+
+
+    <TextView
+        android:layout_width="166dp"
+        android:layout_height="22dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="28dp"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:layout_marginTop="23dp"
+        android:text="Mi Rendimiento"
+        android:textColor="#fff" />
+
+
+    <TextView
+        android:layout_width="166dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="49dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="56dp"
+        android:text="5000"
+        android:textColor="#fff"
+        android:textSize="37sp"
+        android:textStyle="bold" />
+
+
+
+
+
+    <!--ITEMS-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="145dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/vinculoEvento1"
+            android:layout_width="161dp"
+            android:layout_height="101dp"
+            android:layout_alignParentEnd="false"
+            android:layout_alignTop="@+id/vinculoTeoria1"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/car_secundaria" />
+
+        <ImageView
+            android:id="@+id/vinculoTeoria1"
+            android:layout_width="161dp"
+            android:layout_height="101dp"
+            android:layout_alignParentTop="false"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/car_secundaria" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="132dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/vinculoEmpezar1"
+            android:layout_width="161dp"
+            android:layout_height="101dp"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentTop="true"
+            android:layout_alignTop="@+id/vinculoTeoria1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/car_secundaria" />
+
+
+        <ImageView
+            android:id="@+id/vinculoVideos1"
+            android:layout_width="161dp"
+            android:layout_height="101dp"
+            android:layout_alignParentTop="false"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/car_secundaria" />
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/vinculoEmpezar2"
+        android:layout_width="45dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="140dp"
+        android:background="@drawable/empezar" />
+
+
+    <TextView
+        android:id="@+id/vinculoEmpezar3"
+        android:layout_width="141dp"
+        android:layout_height="22dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/vinculoVideos3"
+        android:layout_marginStart="19dp"
+        android:text="Empezar"
+        android:textColor="#fff"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/vinculoVideos2"
+        android:layout_width="45dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/vinculoEmpezar2"
+        android:layout_marginEnd="28dp"
+        android:src="@drawable/videos" />
+
+
+    <TextView
+        android:id="@+id/vinculoVideos3"
+        android:layout_width="102dp"
+        android:layout_height="22dp"
+        android:layout_alignEnd="@+id/vinculoVideos2"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="192dp"
+        android:text="Videos"
+        android:textColor="#fff"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="22dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/vinculoConfig1"
+            android:layout_width="161dp"
+            android:layout_height="101dp"
+            android:layout_alignParentEnd="false"
+            android:layout_alignTop="@+id/vinculoTeoria1"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/car_secundaria" />
+
+        <ImageView
+            android:id="@+id/vinculoAcerca1"
+            android:layout_width="161dp"
+            android:layout_height="101dp"
+            android:layout_alignParentTop="false"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/car_secundaria" />
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/vinculoAcerca2"
+        android:layout_width="45dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/vinculoConfig2"
+        android:layout_marginEnd="28dp"
+        android:background="@drawable/acercade" />
+
+
+    <ImageView
+        android:id="@+id/vinculoConfig2"
+        android:layout_width="45dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/vinculoEmpezar2"
+        android:layout_marginBottom="64dp"
+        android:background="@drawable/configuracion" />
+
+    <TextView
+        android:id="@+id/vinculoAcerca3"
+        android:layout_width="112dp"
+        android:layout_height="22dp"
+        android:layout_alignStart="@+id/vinculoVideos3"
+        android:layout_alignTop="@+id/vinculoConfig3"
+        android:layout_marginStart="12dp"
+        android:text="Acerca De"
+        android:textColor="#fff"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/vinculoConfig3"
+        android:layout_width="142dp"
+        android:layout_height="22dp"
+        android:layout_alignEnd="@+id/vinculoEmpezar3"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:text="Configuracion"
+        android:textColor="#fff"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/vinculoTeoria2"
+        android:layout_width="45dp"
+        android:layout_height="40dp"
+        android:layout_alignStart="@+id/vinculoVideos2"
+        android:layout_alignTop="@+id/vinculoEvento2"
+        android:background="@drawable/teoria" />
+
+
+    <TextView
+        android:id="@+id/vinculoEvento3"
+        android:layout_width="141dp"
+        android:layout_height="22dp"
+        android:layout_marginLeft="2dp"
+        android:layout_alignTop="@+id/vinculoTeoria3"
+        android:text="      Eventos"
+        android:textColor="#fff"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+
+    <ImageView
+        android:id="@+id/vinculoEvento2"
+        android:layout_width="45dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/vinculoEmpezar2"
+        android:layout_marginBottom="183dp"
+        android:background="@drawable/eventos" />
+
+
+    <TextView
+        android:id="@+id/vinculoTeoria3"
+        android:layout_width="95dp"
+        android:layout_height="22dp"
+        android:layout_alignEnd="@+id/vinculoVideos2"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="154dp"
+        android:text="¿Sabias que?"
+        android:textColor="#fff"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

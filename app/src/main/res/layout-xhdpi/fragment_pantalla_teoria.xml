@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/teoria111"
+    android:padding="12dp"
+    tools:context=".fragments.Pantalla_teoria">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_marginTop="63dp"
+        android:layout_height="453dp">
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="285dp"
+        android:textAlignment="center"
+        android:inputType="textMultiLine"
+        android:textColor="#000"
+        android:layout_height="388dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="21dp"
+        android:textSize="17sp"
+        android:text="La contabilidad es una rama de la contaduría pública que se encarga de cuantificar, medir y analizar la realidad económica, las operaciones de las organizaciones, con el fin de facilitar la dirección y el control presentando la información, previamente registrada, de manera sistemática y ordenada para las distintas partes interesadas. Dentro de la contabilidad se registran las transacciones, cambios internos o cualquier otro suceso que afecte económicamente a una entidad.
+
+La finalidad de la contabilidad es suministrar información en un momento dado de los resultados obtenidos durante un período de tiempo, que resulta de utilidad a sus usuarios, en la toma de decisiones, tanto para el control de la gestión pasada, como para las estimaciones de los resultados futuros, dotando tales decisiones de racionalidad y eficiencia.
+
+Actualmente la contabilidad es regulada por dos agencias para evitar el fraude. Las mismas son Generally Accepted Accounting Principles, por sus siglas GAAP, en los Estados Unidos y la Financial Accounting Standards Board, por su siglas FASB, esta es a nivel internacional.
+
+Es una disciplina que sigue el método para generar y después aplicar cierta teoría y también procesos, los cuales son:
+" />
+    </ScrollView>
+</FrameLayout>
