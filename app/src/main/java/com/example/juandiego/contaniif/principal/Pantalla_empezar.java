@@ -33,6 +33,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 ;
+import com.example.juandiego.contaniif.R;
 import com.example.juandiego.contaniif.adapter.PaginacionNumeroAdapter;
 import com.example.juandiego.contaniif.adapter.PreguntasAdapter;
 import com.example.juandiego.contaniif.adapter.PreguntasImagenesAdapter;
