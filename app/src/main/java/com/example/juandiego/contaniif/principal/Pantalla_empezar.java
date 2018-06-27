@@ -298,7 +298,7 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
 //        dialog.show();
 
         String ip=getContext().getString(R.string.ip);
-        String url = "http://"+ip+"/apolunios/wsConsultaPreguntaPrueba2.php";
+        String url = "http://"+ip+"/apolunios/wsConsultaPreguntaPrueba1.php";
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
 //        request.add(jsonObjectRequest);
         VolleySingleton.getIntanciaVolley(getContext()).addToRequestQueue(jsonObjectRequest);
