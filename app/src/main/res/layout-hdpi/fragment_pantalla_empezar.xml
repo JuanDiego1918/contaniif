@@ -35,8 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="41dp"
+        android:layout_marginTop="33dp"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -58,22 +57,24 @@
 
     <ScrollView
         android:id="@+id/scroll"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="305dp"
+        android:layout_height="80dp"
         android:layout_alignParentStart="true"
+        android:scrollbarThumbVertical="@drawable/estilo_scroll_preguntas"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="80dp"
         android:minHeight="58dp">
 
         <TextView
             android:id="@+id/campoPregunta"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="7dp"
             android:gravity="center_vertical"
             android:inputType="textMultiLine"
-            android:paddingLeft="12dp"
-            android:paddingRight="12dp"
+            android:paddingLeft="22dp"
+            android:paddingRight="10dp"
             android:textColor="#000"
             android:textSize="18sp" />
 
@@ -83,9 +84,10 @@
         android:id="@+id/recyclerPreguntasss"
         android:layout_width="match_parent"
         android:layout_height="244dp"
+        android:layout_below="@+id/scroll"
         android:layout_above="@+id/btnContinuar"
         android:layout_alignParentStart="true"
-        android:paddingBottom="22dp"
+        android:paddingBottom="5dp"
         android:tooltipText="Hola recycler">
 
     </android.support.v7.widget.RecyclerView>

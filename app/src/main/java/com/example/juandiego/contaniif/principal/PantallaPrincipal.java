@@ -33,10 +33,9 @@ public class PantallaPrincipal extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-
     ImageView empezar1,videos1,eventos1,teoria1,configuracion1,acercade1;
-    ImageView empezar2,videos2,eventos2,teoria2,configuracion2,acercade2;
-    TextView empezar3,videos3,eventos3,teoria3,configuracion3,acercade3;
+    ImageView rendimiento1,rendimiento3,empezar2,videos2,eventos2,teoria2,configuracion2,acercade2;
+    TextView rendimiento2,rendimiento4,empezar3,videos3,eventos3,teoria3,configuracion3,acercade3;
 
     Puente puente;
     Fragment miFragment;
@@ -75,10 +74,39 @@ public class PantallaPrincipal extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View view =  inflater.inflate(R.layout.fragment_pantalla_principal, container, false);
 
+        rendimiento1 = view.findViewById(R.id.rendimiento1);
+        rendimiento1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                puente.pantalla(7);
+            }
+        });
 
+        rendimiento2 = view.findViewById(R.id.rendimiento2);
+        rendimiento2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                puente.pantalla(7);
+            }
+        });
+
+        rendimiento3 = view.findViewById(R.id.rendimiento3);
+        rendimiento3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                puente.pantalla(7);
+            }
+        });
+
+        rendimiento4 = view.findViewById(R.id.rendimiento4);
+        rendimiento4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                puente.pantalla(7);
+            }
+        });
 
         empezar1 = view.findViewById(R.id.vinculoEmpezar1);
         empezar1.setOnClickListener(new View.OnClickListener() {

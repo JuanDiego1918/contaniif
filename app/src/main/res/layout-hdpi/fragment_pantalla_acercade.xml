@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:paddingRight="12dp"
     android:paddingLeft="12dp"
-    tools:context=".fragmeents_acercade.Pantalla_acercade"
+    tools:context=".acercade.Pantalla_acercade"
     android:background="@drawable/degradado">
 
     <!-- TODO: Update blank fragment layout -->

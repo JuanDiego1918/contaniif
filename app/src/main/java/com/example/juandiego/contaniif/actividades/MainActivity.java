@@ -15,9 +15,11 @@ import com.example.juandiego.contaniif.R;
 import com.example.juandiego.contaniif.acercade.AcercaDeNosotros;
 import com.example.juandiego.contaniif.acercade.MisionVision;
 import com.example.juandiego.contaniif.acercade.Pantalla_acercade;
+import com.example.juandiego.contaniif.configuracion.PantallaConfiguracion;
 import com.example.juandiego.contaniif.eventos.EventosActivity;
 import com.example.juandiego.contaniif.interfaces.AllFragments;
 import com.example.juandiego.contaniif.interfaces.Puente;
+import com.example.juandiego.contaniif.mi_rendimiento.MiRendimiento;
 import com.example.juandiego.contaniif.principal.PantallaPrincipal;
 import com.example.juandiego.contaniif.principal.PrimerFragment;
 import com.example.juandiego.contaniif.principal.SinConexionInternet;
@@ -27,11 +29,7 @@ import com.example.juandiego.contaniif.videos.VideosActivity;
 
 public class MainActivity extends AppCompatActivity implements AllFragments, Puente{android.support.v4.app.Fragment miFragment=null;
 
-
-
     int numerooo;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +52,6 @@ public class MainActivity extends AppCompatActivity implements AllFragments, Pue
         }
 
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -91,13 +88,10 @@ public class MainActivity extends AppCompatActivity implements AllFragments, Pue
 
             //miFragment=new PantallaPrincipal();
             //getSupportFragmentManager().beginTransaction().replace(R.id.content_main,miFragment).commit();
-
-
         }
 
         return super.onOptionsItemSelected(item);
     }
-
 
     public void pantalla(int cambiar) {
         switch (cambiar){
@@ -109,20 +103,21 @@ public class MainActivity extends AppCompatActivity implements AllFragments, Pue
                 numerooo = 0;
                 break;
             case 3:
-
                 Intent intent = new Intent(getApplicationContext(),EventosActivity.class);
                 startActivity(intent);
-
                 numerooo = 0;
                 break;
             case 4:miFragment=new Pantalla_teoria();
                 numerooo = 0;
                 break;
             case 5:
-                //miFragment=new Pantalla_configuracion();
+                miFragment=new PantallaConfiguracion();
                 numerooo = 0;
                 break;
             case 6:miFragment=new Pantalla_acercade();
+                numerooo = 0;
+                break;
+            case 7:miFragment=new MiRendimiento();
                 numerooo = 0;
                 break;
         }

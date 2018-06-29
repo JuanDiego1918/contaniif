@@ -37,6 +37,7 @@ import com.example.juandiego.contaniif.R;
 import com.example.juandiego.contaniif.adapter.PaginacionNumeroAdapter;
 import com.example.juandiego.contaniif.adapter.PreguntasAdapter;
 import com.example.juandiego.contaniif.adapter.PreguntasImagenesAdapter;
+import com.example.juandiego.contaniif.adapter.PreguntasSeleccionMultiple;
 import com.example.juandiego.contaniif.entidades.GestionPreguntas;
 import com.example.juandiego.contaniif.entidades.NumeroVo;
 import com.example.juandiego.contaniif.entidades.PreguntasVo;
@@ -69,6 +70,17 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
     private String mParam2;
 
     String retroBuena;
+
+
+    boolean isCheked = false;
+
+    public boolean getIsCheked() {
+        return isCheked;
+    }
+
+    public void setIsCheked(boolean isCheked) {
+        this.isCheked = isCheked;
+    }
 
     public int getTipoPregunta() {
         return tipoPregunta;
@@ -144,6 +156,7 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
     ArrayList<String> listaImagenes;
     PreguntasAdapter adapter;
     PreguntasImagenesAdapter adapter2;
+    PreguntasSeleccionMultiple adapter3;
     ScrollView miScroll;
     ImageView img;
     Activity activity;
@@ -245,6 +258,11 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
         recyclerViewUsuarios.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerViewUsuarios.setHasFixedSize(true);
         //request = Volley.newRequestQueue(getContext());
+
+        if (getIsCheked()==true){
+            btnContinuar.setVisibility(View.VISIBLE);
+            btnContinuar2.setVisibility(View.INVISIBLE);
+        }
 
 
         cargarWebservices();
@@ -466,9 +484,6 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
 
             adapter2 = new PreguntasImagenesAdapter(listaPreguntas,getContext());
             recyclerViewUsuarios.setAdapter(adapter2);
-
-
-
             recyclerViewUsuarios.addOnItemTouchListener(new RecyclerViewOnClickListener(getContext(), new RecyclerViewOnClickListener.OnItemClickListener() {
                 @Override
                 public void onItemClick(View view, int position) {
@@ -489,7 +504,7 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
                 }
             }));
 
-        }else {
+        }else if(getTipoPregunta()==1){
             adapter = new PreguntasAdapter(listaPreguntas);
             recyclerViewUsuarios.setAdapter(adapter);
             recyclerViewUsuarios.addOnItemTouchListener(new RecyclerViewOnClickListener(getContext(), new RecyclerViewOnClickListener.OnItemClickListener() {
@@ -511,6 +526,29 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
                     adapter.setSelectedPosition(position);
                 }
             }));
+        }else if (getTipoPregunta()==2){
+
+            adapter3 = new PreguntasSeleccionMultiple(listaPreguntas);
+           recyclerViewUsuarios.setAdapter(adapter3);
+            //recyclerViewUsuarios.addOnItemTouchListener(new RecyclerViewOnClickListener(getContext(), new RecyclerViewOnClickListener.OnItemClickListener() {
+            //    @Override
+             //   public void onItemClick(View view, int position) {
+
+                   // btnContinuar.setVisibility(View.VISIBLE);
+                   // btnContinuar2.setVisibility(View.INVISIBLE);
+
+                   /* String enviaPregunta = listaPreguntas.get(recyclerViewUsuarios.getChildAdapterPosition(view)).getOpciones();
+                    String enviaRespuesta = informacion;
+
+                    if (enviaPregunta.equalsIgnoreCase(informacion)) {
+                        setResultado("correcto");
+                    } else {
+                        setResultado("incorrecto");
+                    }*/
+
+                    //adapter3.setSelectedPosition(position);
+           //     }
+           // }));
         }
 
     }

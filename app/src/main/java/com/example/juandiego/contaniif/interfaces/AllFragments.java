@@ -4,6 +4,8 @@ package com.example.juandiego.contaniif.interfaces;
 import com.example.juandiego.contaniif.acercade.AcercaDeNosotros;
 import com.example.juandiego.contaniif.acercade.MisionVision;
 import com.example.juandiego.contaniif.acercade.Pantalla_acercade;
+import com.example.juandiego.contaniif.configuracion.PantallaConfiguracion;
+import com.example.juandiego.contaniif.mi_rendimiento.MiRendimiento;
 import com.example.juandiego.contaniif.principal.PantallaPrincipal;
 import com.example.juandiego.contaniif.principal.Pantalla_empezar;
 import com.example.juandiego.contaniif.principal.PrimerFragment;
@@ -20,7 +22,7 @@ public interface AllFragments
         AcercaDeNosotros.OnFragmentInteractionListener,
         SinConexionInternet.OnFragmentInteractionListener,
         CategoriasVideosFragment.OnFragmentInteractionListener,
-        PrimerFragment.OnFragmentInteractionListener
-        //NumeroPreguntas.OnFragmentInteractionListener
-{
+        PrimerFragment.OnFragmentInteractionListener,
+        PantallaConfiguracion.OnFragmentInteractionListener,
+        MiRendimiento.OnFragmentInteractionListener{
 }
