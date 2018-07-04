@@ -12,6 +12,7 @@
     <ImageView
         android:layout_width="338dp"
         android:layout_height="110dp"
+        android:id="@+id/rendimiento1"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="12dp"
