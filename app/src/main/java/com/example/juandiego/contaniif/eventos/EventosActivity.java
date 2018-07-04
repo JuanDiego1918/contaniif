@@ -202,6 +202,8 @@ public class EventosActivity extends AppCompatActivity implements Response.Liste
             return rootView;
         }
 
+        //hola grupo
+
         private void mostrarImg(String rutaImagen) {
             String ip=getContext().getString(R.string.ip);
 
