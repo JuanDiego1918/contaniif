@@ -1,7 +1,6 @@
 package com.example.juandiego.contaniif.principal;
 
 
-//hola monito
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
