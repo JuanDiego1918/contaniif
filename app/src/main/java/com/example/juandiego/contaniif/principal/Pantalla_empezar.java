@@ -69,7 +69,9 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
     private String mParam1;
     private String mParam2;
 
+    ArrayList<String>listaPre;
     String retroBuena;
+    int contador = 0;
 
 
     boolean isCheked = false;
@@ -150,7 +152,7 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
 
     ArrayList<NumeroVo> listanumero;
     NumeroVo miNumeroVo;
-    int numero=0;
+    int numero=3;
     RecyclerView miRecyclerNumero;
 
     ArrayList<String> listaImagenes;
@@ -316,7 +318,7 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
 //        dialog.show();
 
         String ip=getContext().getString(R.string.ip);
-        String url = "http://"+ip+"/apolunios/wsConsultaPreguntaPrueba1.php";
+        String url = "http://"+ip+"/apolunios/wsConsultaPreguntaPrueba2.php";
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
 //        request.add(jsonObjectRequest);
         VolleySingleton.getIntanciaVolley(getContext()).addToRequestQueue(jsonObjectRequest);
@@ -482,6 +484,7 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
         if (getTipoPregunta()==3){
 
 
+
             adapter2 = new PreguntasImagenesAdapter(listaPreguntas,getContext());
             recyclerViewUsuarios.setAdapter(adapter2);
             recyclerViewUsuarios.addOnItemTouchListener(new RecyclerViewOnClickListener(getContext(), new RecyclerViewOnClickListener.OnItemClickListener() {
@@ -530,25 +533,34 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
 
             adapter3 = new PreguntasSeleccionMultiple(listaPreguntas);
            recyclerViewUsuarios.setAdapter(adapter3);
-            //recyclerViewUsuarios.addOnItemTouchListener(new RecyclerViewOnClickListener(getContext(), new RecyclerViewOnClickListener.OnItemClickListener() {
-            //    @Override
-             //   public void onItemClick(View view, int position) {
+            /*recyclerViewUsuarios.addOnItemTouchListener(new RecyclerViewOnClickListener(getContext(), new RecyclerViewOnClickListener.OnItemClickListener() {
+              @Override
+                public void onItemClick(View view, int position) {
 
-                   // btnContinuar.setVisibility(View.VISIBLE);
-                   // btnContinuar2.setVisibility(View.INVISIBLE);
 
-                   /* String enviaPregunta = listaPreguntas.get(recyclerViewUsuarios.getChildAdapterPosition(view)).getOpciones();
+                  contador++;
+
+                    btnContinuar.setVisibility(View.VISIBLE);
+                    btnContinuar2.setVisibility(View.INVISIBLE);
+
+                    String enviaPregunta = listaPreguntas.get(recyclerViewUsuarios.getChildAdapterPosition(view)).getOpciones();
+                  for (int i = 0; i<contador;i++){
+                      listaPre = new ArrayList<String>();
+                      listaPre.add(listaPreguntas.get(recyclerViewUsuarios.getChildAdapterPosition(view)).getOpciones());
+                  }
+                  Toast.makeText(getContext(),"respuesta" + listaPre,Toast.LENGTH_SHORT).show();
+
                     String enviaRespuesta = informacion;
 
                     if (enviaPregunta.equalsIgnoreCase(informacion)) {
                         setResultado("correcto");
                     } else {
                         setResultado("incorrecto");
-                    }*/
+                    }
 
-                    //adapter3.setSelectedPosition(position);
-           //     }
-           // }));
+                    adapter3.setSelectedPosition(position);
+               }
+           }));*/
         }
 
     }

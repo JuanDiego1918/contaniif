@@ -105,7 +105,7 @@ public class CategoriasVideosFragment extends Fragment implements Response.Liste
     }
 
     private void cargarWebservices() {
-        String url = "http://"+getContext().getString(R.string.ip)+"/apolunios/VideosCategorias.php";
+        String url = "http://"+getContext().getString(R.string.ip)+"VideosCategorias.php";
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
         request.add(jsonObjectRequest);
     }

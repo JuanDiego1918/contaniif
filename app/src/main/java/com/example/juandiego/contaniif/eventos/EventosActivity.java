@@ -105,7 +105,7 @@ public class EventosActivity extends AppCompatActivity implements Response.Liste
         recyclerViewNumero.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerViewNumero.setLayoutManager(new LinearLayoutManager(this, LinearLayout.HORIZONTAL,false));
         request= Volley.newRequestQueue(getApplication());
-        String url="http://"+getApplicationContext().getString(R.string.ip)+"/apolunios/eventos.php";
+        String url="http://"+getApplicationContext().getString(R.string.ip)+"eventos.php";
         jsonObjectRequest=new JsonObjectRequest(Request.Method.GET,url,null,this,this);
         request.add(jsonObjectRequest);
     }
@@ -205,7 +205,7 @@ public class EventosActivity extends AppCompatActivity implements Response.Liste
         private void mostrarImg(String rutaImagen) {
             String ip=getContext().getString(R.string.ip);
 
-            String urlImagen="http://"+ip+rutaImagen;
+            final String urlImagen="http://"+ip+rutaImagen;
             ImageRequest imageRequest=new ImageRequest(urlImagen, new Response.Listener<Bitmap>() {
                 @Override
                 public void onResponse(Bitmap response) {
@@ -214,7 +214,7 @@ public class EventosActivity extends AppCompatActivity implements Response.Liste
             }, 0, 0, ImageView.ScaleType.CENTER, null, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(getContext(),"Error al cargar la imagen", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),"Error al cargar la imagen" + urlImagen, Toast.LENGTH_LONG).show();
                 }
             });
             request.add(imageRequest);

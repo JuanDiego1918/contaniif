@@ -159,7 +159,7 @@ public class VideosActivity extends AppCompatActivity implements Response.Listen
      */
     private void cargarWebService() {
         youtubeVideoArrayList = new ArrayList<>();
-        String url="http://"+getApplicationContext().getString(R.string.ip)+"/apolunios/videos.php?categoria="+miBundle.getString("id");
+        String url="http://"+getApplicationContext().getString(R.string.ip)+"videos.php?categoria="+miBundle.getString("id");
         jsonObjectRequest=new JsonObjectRequest(Request.Method.GET,url,null,this,this);
         request.add(jsonObjectRequest);
     }
