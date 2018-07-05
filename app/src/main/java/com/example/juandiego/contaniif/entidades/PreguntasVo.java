@@ -1,9 +1,15 @@
 package com.example.juandiego.contaniif.entidades;
 
+import java.util.ArrayList;
+
 public class PreguntasVo {
 
 
     private String rutaImagen;
+
+    private boolean isCheck;
+
+    private ArrayList<String> listaSeleccionada;
 
     public String getRutaImagen() {
         return rutaImagen;
@@ -130,4 +136,12 @@ public class PreguntasVo {
 
     public void setId(String pregunta) {
     }
+    public boolean isCheck() {
+        return isCheck;
+    }
+
+    public void setCheck(boolean check) {
+        isCheck = check;
+    }
+
 }

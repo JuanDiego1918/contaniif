@@ -4,11 +4,14 @@ import android.content.Context;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.juandiego.contaniif.R;
 import com.example.juandiego.contaniif.entidades.PreguntasVo;
@@ -56,10 +59,18 @@ public class PreguntasSeleccionMultiple extends RecyclerView.Adapter<PreguntasSe
     }
 
     @Override
-    public void onBindViewHolder(UsuariosHolder holder, int position) {
+    public void onBindViewHolder(final UsuariosHolder holder, int position) {
 
         //holder.preguntaa.setText(listaUsuarios.get(position).getPregunta().toString());
         holder.respuesta.setText(listaUsuarios.get(position).getOpciones().toString());
+        holder.respuesta.setOnCheckedChangeListener(null);
+        holder.respuesta.setChecked(listaUsuarios.get(position).isCheck());
+        holder.respuesta.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                listaUsuarios.get(holder.getAdapterPosition()).setCheck(b);
+            }
+        });
         if (selectedPosition == position) {
             holder.respuesta.setBackgroundColor(Color.parseColor("#C4CDDA"));
             //holder.respuesta.setSelected(true);
@@ -102,9 +113,6 @@ public class PreguntasSeleccionMultiple extends RecyclerView.Adapter<PreguntasSe
     public UsuariosHolder(View itemView) {
         super(itemView);
         respuesta = itemView.findViewById(R.id.respuestaaaa);
-        if (respuesta.isActivated()){
-            empezar.setIsCheked(true);
-        }
     }
 
     }
