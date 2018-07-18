@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/h">
+
+
+    <RelativeLayout
+        android:id="@+id/ensayo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:alignmentMode="alignBounds"
+        android:background="@drawable/card_principal"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/preguntasRespuestaRelacion"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="Texto Ejemplo Sobre saljdlsajak"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/imagenesRespuestaRelacion"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:padding="5dp"
+            android:layout_alignStart="@+id/preguntasRespuestaRelacion"
+            android:layout_below="@+id/preguntasRespuestaRelacion" />
+
+    </RelativeLayout>
+
+</LinearLayout>

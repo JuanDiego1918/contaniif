@@ -91,7 +91,7 @@ public class PreguntasImagenesAdapter extends RecyclerView.Adapter<PreguntasImag
 
     }
 
-    public class ImagenesHolder extends RecyclerView.ViewHolder {
+    public static class ImagenesHolder extends RecyclerView.ViewHolder {
         ImageView imagen;
         public ImagenesHolder(View itemView) {
             super(itemView);

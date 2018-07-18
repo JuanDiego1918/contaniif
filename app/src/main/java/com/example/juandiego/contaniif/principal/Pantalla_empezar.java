@@ -615,6 +615,9 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
                     adapter3.setSelectedPosition(position);
                }
            }));*/
+        }else if (getTipoPregunta()==4){
+            fragment=new Pantalla_empezar_drag();
+            getFragmentManager().beginTransaction().replace(R.id.content_main, fragment).commit();
         }
 
     }

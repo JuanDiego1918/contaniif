@@ -98,7 +98,8 @@ public class PrimerFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 myDialogempezarPreuntas.dismiss();
-                fragment=new Pantalla_empezar();
+                //fragment=new Pantalla_empezar();
+                fragment=new Pantalla_empezar_drag();
                 getFragmentManager().beginTransaction().replace(R.id.content_main,fragment).commit();
             }
         });

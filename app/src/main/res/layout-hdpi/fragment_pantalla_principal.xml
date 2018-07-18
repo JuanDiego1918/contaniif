@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:paddingLeft="10dp"
-    android:paddingTop="-15dp"
-    android:paddingRight="10dp"
-    android:background="@drawable/degradado"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/contenedor"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/contenedor">
+    android:background="@drawable/degradado"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="-15dp">
 
     <ImageView
-        android:layout_width="338dp"
         android:id="@+id/rendimiento1"
+        android:layout_width="338dp"
         android:layout_height="110dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -20,9 +19,9 @@
 
     <LinearLayout
         android:layout_width="146dp"
-       android:layout_height="5dp"
-        android:layout_marginTop="110dp"
+        android:layout_height="5dp"
         android:layout_marginLeft="32dp"
+        android:layout_marginTop="110dp"
         android:background="@color/colorAccent">
 
     </LinearLayout>
@@ -30,8 +29,8 @@
     <LinearLayout
         android:layout_width="146dp"
         android:layout_height="5dp"
-        android:layout_marginTop="110dp"
         android:layout_marginLeft="92dp"
+        android:layout_marginTop="110dp"
         android:background="@drawable/bordelayout">
 
     </LinearLayout>
@@ -39,8 +38,8 @@
     <!--ITEMS-->
 
     <ImageView
-        android:layout_width="50dp"
         android:id="@+id/rendimiento3"
+        android:layout_width="50dp"
         android:layout_height="44dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
@@ -49,36 +48,32 @@
         android:background="@drawable/copa" />
 
 
-
     <TextView
-        android:layout_width="166dp"
         android:id="@+id/rendimiento2"
+        android:layout_width="166dp"
         android:layout_height="22dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="28dp"
-        android:textStyle="bold"
-        android:textSize="17sp"
         android:layout_marginTop="23dp"
         android:text="Mi Rendimiento"
-        android:textColor="#fff" />
+        android:textColor="#fff"
+        android:textSize="17sp"
+        android:textStyle="bold" />
 
 
     <TextView
-        android:layout_width="166dp"
         android:id="@+id/rendimiento4"
+        android:layout_width="166dp"
         android:layout_height="42dp"
-        android:layout_marginTop="49dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_marginEnd="56dp"
+        android:layout_marginTop="49dp"
         android:text="5000"
         android:textColor="#fff"
         android:textSize="37sp"
         android:textStyle="bold" />
-
-
-
 
 
     <!--ITEMS-->

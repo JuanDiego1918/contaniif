@@ -1,26 +1,56 @@
 package com.example.juandiego.contaniif.entidades;
 
-import java.util.ArrayList;
+public class PreguntasDragVo {
 
-public class PreguntasVo {
-
-
-    private String rutaImagen;
-
-    private boolean isCheck;
-
-    private ArrayList<String> listaSeleccionada;
-
-    public String getRutaImagen() {
-        return rutaImagen;
-    }
-
-    public void setRutaImagen(String rutaImagen) {
-        this.rutaImagen = rutaImagen;
-    }
-
+    private String palabra;
+    private String ruta;
+    private boolean mostrar;
+    private String img;
+    private int id;
+    private int puntaje;
+    private int tiempoDemora;
+    private int tipo;
+    private String opciones;
+    private String respuesta;
     private String pregunta;
     private int categoria;
+    private String retobuena;
+    private String retromala;
+
+    public PreguntasDragVo() {
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getPalabra() {
+        return palabra;
+    }
+
+    public void setPalabra(String palabra) {
+        this.palabra = palabra;
+    }
+
+    public String getRuta() {
+        return ruta;
+    }
+
+    public void setRuta(String ruta) {
+        this.ruta = ruta;
+    }
+
+    public boolean isMostrar() {
+        return mostrar;
+    }
+
+    public void setMostrar(boolean mostrar) {
+        this.mostrar = mostrar;
+    }
 
     public int getId() {
         return id;
@@ -28,46 +58,6 @@ public class PreguntasVo {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    private int id;
-    private int puntaje;
-    private int tiempoDemora;
-    private int tipo;
-
-    private String arregloPregunta;
-
-    private String opciones;
-    private String respuesta;
-
-
-    public String[] getRepuesta() {
-        return repuesta;
-    }
-
-    public void setRepuesta(String[] repuesta) {
-        this.repuesta = repuesta;
-    }
-
-    private String repuesta[];
-
-    private String retobuena;
-    private String retromala;
-
-    public String getPregunta() {
-        return pregunta;
-    }
-
-    public void setPregunta(String pregunta) {
-        this.pregunta = pregunta;
-    }
-
-    public int getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(int categoria) {
-        this.categoria = categoria;
     }
 
     public int getPuntaje() {
@@ -110,6 +100,22 @@ public class PreguntasVo {
         this.respuesta = respuesta;
     }
 
+    public String getPregunta() {
+        return pregunta;
+    }
+
+    public void setPregunta(String pregunta) {
+        this.pregunta = pregunta;
+    }
+
+    public int getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(int categoria) {
+        this.categoria = categoria;
+    }
+
     public String getRetobuena() {
         return retobuena;
     }
@@ -125,15 +131,4 @@ public class PreguntasVo {
     public void setRetromala(String retromala) {
         this.retromala = retromala;
     }
-
-    public void setId(String pregunta) {
-    }
-    public boolean isCheck() {
-        return isCheck;
-    }
-
-    public void setCheck(boolean check) {
-        isCheck = check;
-    }
-
 }

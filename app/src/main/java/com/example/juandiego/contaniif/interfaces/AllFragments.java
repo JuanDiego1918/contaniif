@@ -8,6 +8,7 @@ import com.example.juandiego.contaniif.configuracion.PantallaConfiguracion;
 import com.example.juandiego.contaniif.mi_rendimiento.MiRendimiento;
 import com.example.juandiego.contaniif.principal.PantallaPrincipal;
 import com.example.juandiego.contaniif.principal.Pantalla_empezar;
+import com.example.juandiego.contaniif.principal.Pantalla_empezar_drag;
 import com.example.juandiego.contaniif.principal.PrimerFragment;
 import com.example.juandiego.contaniif.principal.SinConexionInternet;
 import com.example.juandiego.contaniif.teoria.Pantalla_teoria;
@@ -24,5 +25,6 @@ public interface AllFragments
         CategoriasVideosFragment.OnFragmentInteractionListener,
         PrimerFragment.OnFragmentInteractionListener,
         PantallaConfiguracion.OnFragmentInteractionListener,
-        MiRendimiento.OnFragmentInteractionListener{
+        MiRendimiento.OnFragmentInteractionListener,
+        Pantalla_empezar_drag.OnFragmentInteractionListener{
 }
