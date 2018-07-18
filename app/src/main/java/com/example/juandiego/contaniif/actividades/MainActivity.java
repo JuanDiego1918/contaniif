@@ -23,6 +23,7 @@ import com.example.juandiego.contaniif.mi_rendimiento.MiRendimiento;
 import com.example.juandiego.contaniif.principal.PantallaPrincipal;
 import com.example.juandiego.contaniif.principal.PrimerFragment;
 import com.example.juandiego.contaniif.principal.SinConexionInternet;
+import com.example.juandiego.contaniif.registro.Registro;
 import com.example.juandiego.contaniif.teoria.Pantalla_teoria;
 import com.example.juandiego.contaniif.videos.CategoriasVideosFragment;
 import com.example.juandiego.contaniif.videos.VideosActivity;
@@ -42,7 +43,8 @@ public class MainActivity extends AppCompatActivity implements AllFragments, Pue
 
         if (networkInfo!=null && networkInfo.isConnected()){
 
-            miFragment=new PantallaPrincipal();
+            miFragment=new Registro();
+            //miFragment=new PantallaPrincipal();
             getSupportFragmentManager().beginTransaction().replace(R.id.content_main,miFragment).commit();
 
         }else{

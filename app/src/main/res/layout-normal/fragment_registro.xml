@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".registro.Registro">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="419dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="-18dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="406dp"
+            android:paddingLeft="18dp"
+            android:paddingRight="18dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="220dp"
+                android:id="@+id/imagenUsuario"
+                android:layout_height="122dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="22dp"
+                android:paddingLeft="44dp"
+                android:paddingRight="44dp"
+                android:src="@drawable/usuario" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="52dp"
+                android:id="@+id/imagenCamara"
+                android:layout_height="52dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="74dp"
+                android:layout_marginTop="81dp"
+                android:src="@drawable/camara" />
+
+            <EditText
+                android:id="@+id/campoNombreRegistro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#000"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="162dp"
+                android:hint="Nombres" />
+
+            <EditText
+                android:id="@+id/campoApellidosRegistro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#000"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/campoNombreRegistro"
+                android:layout_centerHorizontal="true"
+                android:ems="10"
+                android:hint="Apellidos"
+                android:inputType="textPersonName" />
+
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                android:id="@+id/spinnerGeneroRegistro"
+                android:layout_below="@+id/campoApellidosRegistro"
+                android:layout_marginTop="10dp">
+            </Spinner>
+
+            <!--<RadioGroup
+                android:id="@+id/grupoRadioGenero"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/campoApellidosRegistro"
+                android:layout_centerHorizontal="true">
+
+                <RadioButton
+                    android:id="@+id/redioGeneroMasculinoRegistro"
+                    android:layout_width="match_parent"
+                    android:textColor="#000"
+                    android:layout_height="wrap_content"
+                    android:text="Femenino" />
+
+                <RadioButton
+                    android:id="@+id/redioGeneroFemeninoRegistro"
+                    android:layout_width="match_parent"
+                    android:textColor="#000"
+                    android:layout_height="wrap_content"
+                    android:text="Masculino" />
+            </RadioGroup>-->
+
+
+
+            <EditText
+                android:id="@+id/campoCorreoRegistro"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spinnerGeneroRegistro"
+                android:textColorHint="#000"
+                android:layout_centerHorizontal="true"
+                android:ems="10"
+                android:hint="Correo electronico"
+                android:inputType="textEmailAddress" />
+
+
+            <EditText
+                android:id="@+id/campoFechaRegistro"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/campoCorreoRegistro"
+                android:textColorHint="#000"
+                android:layout_centerHorizontal="true"
+                android:ems="10"
+                android:hint="Fecha de nacimiento"
+                android:inputType="datetime" />
+
+
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                android:id="@+id/spinnerDepartamentoRegistro"
+                android:layout_below="@+id/campoFechaRegistro"
+                android:layout_marginTop="10dp">
+            </Spinner>
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                android:id="@+id/spinnerCuidadRegistro"
+                android:layout_below="@+id/spinnerDepartamentoRegistro"
+                android:layout_marginTop="10dp">
+
+            </Spinner>
+        </RelativeLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnRegistrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:text="Registrar" />
+</RelativeLayout>
