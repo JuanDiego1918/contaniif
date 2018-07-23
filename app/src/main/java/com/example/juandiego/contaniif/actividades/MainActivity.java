@@ -1,5 +1,5 @@
 package com.example.juandiego.contaniif.actividades;
-
+///jhsakjdh
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity implements AllFragments, Pue
 
         if (networkInfo!=null && networkInfo.isConnected()){
 
-            miFragment=new Registro();
-            //miFragment=new PantallaPrincipal();
+            //miFragment=new Registro();
+            miFragment=new PantallaPrincipal();
             getSupportFragmentManager().beginTransaction().replace(R.id.content_main,miFragment).commit();
 
         }else{
