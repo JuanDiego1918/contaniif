@@ -82,11 +82,13 @@ public class Pantalla_empezar_drag extends Fragment implements Response.Listener
     Activity activity;
     Puente puente;
 
+    int numeroArray = 0;
     int numero;
     int correctas = 0;
     Button btnContinuar2, btnContinuar;
     AdapterDrag miAdapter;
-    ArrayList<PreguntasDragVo> respuestaCompleta,respuestaCorrecta;
+    ArrayList<PreguntasDragVo> respuestaCompleta;
+    ArrayList<String> respuestaCorrecta;
 
     PreguntasImagenesAdapterDrag miPreguntasImagenesAdapter;
     ArrayList<PreguntasDragVo> list;
@@ -234,7 +236,7 @@ public class Pantalla_empezar_drag extends Fragment implements Response.Listener
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_pantalla_empezar_drag, container, false);
 
-        respuestaCorrecta=new ArrayList<>();
+        respuestaCorrecta = new ArrayList<>();
         respuestaCompleta = new ArrayList<>();
         list = new ArrayList<>();
 
@@ -252,7 +254,7 @@ public class Pantalla_empezar_drag extends Fragment implements Response.Listener
         miRecyclerNumero.setLayoutManager(new LinearLayoutManager(getContext()));
         miRecyclerNumero.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayout.HORIZONTAL, false));
 
-        listanumero=new ArrayList<>();
+        listanumero = new ArrayList<>();
         for (int i = 1; i < 11; i++) {
             miNumeroVo = new NumeroVo();
             miNumeroVo.setNumeroPagina(i);
@@ -265,13 +267,13 @@ public class Pantalla_empezar_drag extends Fragment implements Response.Listener
         btnContinuar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String[] bar = list.get(0).getRespuesta().split("&&");
+                for (String foobar : bar) {
+                    respuestaCorrecta.add(foobar);
+                }
                 for (int i = 0; i < respuestaCompleta.size(); i++) {
-                    for (int j = 0; j < list.size(); j++) {
-                        if (respuestaCompleta.get(i).getPalabra().equals(list.get(j).getPalabra())) {
-                            if (respuestaCompleta.get(i).getRespuesta().equals(list.get(j).getRespuesta())) {
-                                correctas++;
-                            }
-                        }
+                    if (respuestaCorrecta.contains(respuestaCompleta.get(i).getRespuesta())) {
+                        correctas++;
                     }
                 }
                 if (correctas == 4) {
@@ -352,14 +354,7 @@ public class Pantalla_empezar_drag extends Fragment implements Response.Listener
                     list.get(i).setPalabra(bar[0]);
                 }
             }
-            String[] bar = list.get(0).getRespuesta().split("&&");
-            Toast.makeText(getContext(),getTipoPregunta()+"Tamañ  "+list.get(0).getRespuesta(),Toast.LENGTH_SHORT).show();
-            for (String foobar : bar) {
-                miVo=new PreguntasDragVo();
-                //miVo.setRespuesta(String.format(foobar));
-                respuestaCorrecta.add(miVo);
-                //Toast.makeText(getContext(),"Tamañ  "+respuestaCorrecta.size()+"  texto: "+String.format(foobar),Toast.LENGTH_SHORT).show();
-            }
+
 
             setRetroMala(miVo.getRetromala());
             setRetroBuena(miVo.getRetobuena());
@@ -412,6 +407,7 @@ public class Pantalla_empezar_drag extends Fragment implements Response.Listener
                         for (int i = 0; i < list.size(); i++) {
                             if (list.get(i).getRuta() == list.get(PreguntasTexto.getChildAdapterPosition(view)).getImg()) {
                                 list.get(i).setMostrar(false);
+                                respuestaCompleta.remove(list.get(PreguntasTexto.getChildAdapterPosition(view)));
                                 Imagenes.setAdapter(miPreguntasImagenesAdapter);
                             }
                         }
@@ -440,10 +436,12 @@ public class Pantalla_empezar_drag extends Fragment implements Response.Listener
                                     btnContinuar2.setVisibility(View.INVISIBLE);
                                     /////////////////////////////////////////////////////////////////////////////////////////////////////
                                     miVo = new PreguntasDragVo();
+                                    miVo.setId(numeroArray);
                                     miVo.setPalabra(list.get(PreguntasTexto.getChildAdapterPosition(v)).getPalabra());
                                     miVo.setRuta(list.get(numero).getRuta());
                                     miVo.setRespuesta(list.get(PreguntasTexto.getChildAdapterPosition(v)).getPalabra() + "&%" + list.get(numero).getRuta());
                                     respuestaCompleta.add(miVo);
+                                    numeroArray++;
                                     ////////////////////////////////////////////////////////////////////////////////////////////////////
                                     PreguntasTexto.setAdapter(miAdapter);
                                     list.get(numero).setMostrar(true);
