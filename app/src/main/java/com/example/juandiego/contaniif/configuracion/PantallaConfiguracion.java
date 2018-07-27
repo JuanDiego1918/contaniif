@@ -39,6 +39,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -167,7 +168,8 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
     private static final int COD_FOTO = 20;
     ///////-Elementos del layout
     Spinner listaDepartamentos, listaMunicipios, listaGenero;
-    EditText campoNombre, campoApellido, campoFechaNacimiento, campoCorreo,campoMunicipio,campoDepartamento,campoGenero;
+    EditText campoNombre, campoApellido, campoFechaNacimiento, campoCorreo;
+    TextView campoMunicipio,campoDepartamento,campoGenero;
     ImageView imagenUsuario, imagenCamara;
     ImageView editarGenero,editarFecha,editarDepartamento,editarMunicipio;
     Button btnRegistro,btnFalso;
@@ -185,6 +187,7 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
     /////
     ProgressDialog progreso;
     /////
+    String rutaImagen;
     /////
     Dialog myDialogFecha;
 
@@ -346,17 +349,19 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
             public void onClick(View view) {
                 campoDepartamento.setVisibility(View.INVISIBLE);
                 listaDepartamentos.setVisibility(View.VISIBLE);
+                campoMunicipio.setVisibility(View.INVISIBLE);
+                listaMunicipios.setVisibility(View.VISIBLE);
             }
         });
 
-        editarMunicipio = vista.findViewById(R.id.imagenEditarMunicipio);
+        /*editarMunicipio = vista.findViewById(R.id.imagenEditarMunicipio);
         editarMunicipio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 campoMunicipio.setVisibility(View.INVISIBLE);
                 listaMunicipios.setVisibility(View.VISIBLE);
             }
-        });
+        });*/
 
         campoNombre = vista.findViewById(R.id.campoNombreConfig);
         campoApellido = vista.findViewById(R.id.campoApellidoConfig);
@@ -429,7 +434,7 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
         // progreso.setMessage("Consultando...");
         // progreso.show();
 
-        String url = "http://"+getContext().getString(R.string.ip2)+"/apolunios/wsJSONConsultarUsuarioImagen2.php?correo="+getCredenciales();
+        String url = "http://"+getContext().getString(R.string.ip2)+"/apolunios/ConsultarUsuarios.php?correo="+getCredenciales();
         jsonObjectRequest2 = new JsonObjectRequest(Request.Method.GET,url,null,this,this);
         request2.add(jsonObjectRequest2);
         setAccion(2);
@@ -545,6 +550,25 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
         }
     }
 
+    private void mostrarImg(String rutaImagen) {
+        String ip=getContext().getString(R.string.ip2);
+
+        final String urlImagen="http://"+ip+rutaImagen;
+        ImageRequest imageRequest=new ImageRequest(urlImagen, new Response.Listener<Bitmap>() {
+            @Override
+            public void onResponse(Bitmap response) {
+                imagenUsuario.setImageBitmap(response);
+            }
+        }, 0, 0, ImageView.ScaleType.CENTER, null, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(),"Error al cargar la imagen" + urlImagen, Toast.LENGTH_LONG).show();
+            }
+        });
+        setAccion(2);
+        request.add(imageRequest);
+    }
+
     private String convertirImgString(Bitmap bitmap) {
         ByteArrayOutputStream array=new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG,100,array);
@@ -644,11 +668,11 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
                     miUsuario.setDepartamento(jsonObject2.optString("departamento"));
                     miUsuario.setMunicipio(jsonObject2.optString("municipio"));
                     miUsuario.setRutaImagen(jsonObject2.optString("rutaImagen"));
-
+///////////////////////////////////////////////////////////////////////////////777////77////77/////777777///7//////////////
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
+                mostrarImg(miUsuario.getRutaImagen().toString());
                 campoNombre.setText(miUsuario.getNombres().toString());
                 campoApellido.setText(miUsuario.getApellidos().toString());
                 campoGenero.setText(miUsuario.getGenero().toString());

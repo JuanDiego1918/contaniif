@@ -123,15 +123,16 @@
                     <RelativeLayout
                         android:layout_height="wrap_content"
                         android:layout_width="match_parent">
-                        <EditText
+                        <TextView
                             android:id="@+id/campoGeneroConfig"
-                            android:layout_width="162dp"
+                            android:layout_width="122dp"
+                            android:textSize="18dp"
+                            android:layout_marginLeft="5dp"
                             android:layout_height="wrap_content"
-                            android:textColorHint="#000"
+                            android:textColor="#000"
                             android:hint="Genero" />
 
                         <Spinner
-                            android:layout_marginTop="10dp"
                             android:id="@+id/spinnerGeneroConfig"
                             android:layout_width="162dp"
                             android:layout_height="25dp">
@@ -140,7 +141,6 @@
 
                     <ImageView
                         android:id="@+id/imagenEditarGenero"
-                        android:layout_marginTop="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/lapiz"/>
@@ -160,27 +160,29 @@
                         android:layout_height="wrap_content"
                         android:layout_width="match_parent">
 
-                        <EditText
+                        <TextView
                             android:id="@+id/campoDepartamentoConfig"
-                            android:layout_width="162dp"
+                            android:layout_width="122dp"
+                            android:textSize="18dp"
+                            android:layout_marginTop="10dp"
+                            android:textColor="#000"
+                            android:layout_marginLeft="5dp"
                             android:layout_height="wrap_content"
                             android:textColorHint="#000"
                             android:hint="Departamento" />
 
                         <Spinner
                             android:id="@+id/spinnerDepartamentoConfig"
-                            android:layout_marginTop="10dp"
                             android:layout_width="162dp"
-                            android:layout_height="25dp">
-                        </Spinner>
+                            android:layout_height="wrap_content"></Spinner>
                     </RelativeLayout>
 
                     <ImageView
                         android:id="@+id/imagenEditarDepartamento"
-                        android:layout_marginTop="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/lapiz"/>
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/lapiz" />
 
                 </TableRow>
 
@@ -198,27 +200,22 @@
                         android:layout_height="wrap_content"
                         android:layout_width="match_parent">
 
-                        <EditText
+                        <TextView
                             android:id="@+id/campoMunicipioConfig"
-                            android:layout_width="162dp"
+                            android:layout_width="122dp"
+                            android:textSize="18dp"
+                            android:textColor="#000"
+                            android:layout_marginLeft="5dp"
                             android:layout_height="wrap_content"
                             android:textColorHint="#000"
                             android:hint="Municipio" />
 
                         <Spinner
                             android:id="@+id/spinnerMunicipioConfig"
-                            android:layout_marginTop="10dp"
                             android:layout_width="162dp"
                             android:layout_height="25dp">
                         </Spinner>
                     </RelativeLayout>
-
-                    <ImageView
-                        android:id="@+id/imagenEditarMunicipio"
-                        android:layout_marginTop="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/lapiz"/>
                 </TableRow>
 
                 <TableRow>

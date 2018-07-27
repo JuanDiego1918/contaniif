@@ -2,6 +2,7 @@ package com.example.juandiego.contaniif.actividades;
 ///jhsakjdh
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -10,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.juandiego.contaniif.R;
 import com.example.juandiego.contaniif.acercade.AcercaDeNosotros;
@@ -42,10 +44,10 @@ public class MainActivity extends AppCompatActivity implements AllFragments, Pue
 
 
         if (networkInfo!=null && networkInfo.isConnected()){
-
             //miFragment=new Registro();
-            miFragment=new PantallaPrincipal();
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_main,miFragment).commit();
+           // miFragment=new PantallaPrincipal();
+            //getSupportFragmentManager().beginTransaction().replace(R.id.content_main,miFragment).commit();
+            cargarCredenciales();
 
         }else{
 
@@ -53,6 +55,18 @@ public class MainActivity extends AppCompatActivity implements AllFragments, Pue
             getSupportFragmentManager().beginTransaction().replace(R.id.content_main,miFragment).commit();
         }
 
+    }
+
+    private void cargarCredenciales() {
+        SharedPreferences preferences = getSharedPreferences("Credenciales",Context.MODE_PRIVATE);
+        String credenciales = preferences.getString("correo","No existe el valor");
+       if (credenciales!="No existe el valor"){
+           miFragment=new PantallaPrincipal();
+           getSupportFragmentManager().beginTransaction().replace(R.id.content_main,miFragment).commit();
+       }else {
+           miFragment=new Registro();
+           getSupportFragmentManager().beginTransaction().replace(R.id.content_main,miFragment).commit();
+       }
     }
 
     @Override
