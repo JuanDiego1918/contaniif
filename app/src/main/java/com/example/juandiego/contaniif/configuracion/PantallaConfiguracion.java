@@ -35,6 +35,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -54,6 +55,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -72,6 +75,34 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
     int validacionGenero;
     int validacionMunicipio;
     int validacionDepartamento;
+    int validacionFecha;
+    int validacionImagenusuario1;
+    String urlImagenUsuario;
+
+    public String getUrlImagenUsuario() {
+        return urlImagenUsuario;
+    }
+
+    public void setUrlImagenUsuario(String urlImagenUsuario) {
+        this.urlImagenUsuario = urlImagenUsuario;
+    }
+
+    public int getValidacionImagenusuario1() {
+        return validacionImagenusuario1;
+    }
+
+    public void setValidacionImagenusuario1(int validacionImagenusuario1) {
+        this.validacionImagenusuario1 = validacionImagenusuario1;
+    }
+
+    public int getValidacionFecha() {
+        return validacionFecha;
+    }
+
+    public void setValidacionFecha(int validacionFecha) {
+        this.validacionFecha = validacionFecha;
+    }
+
     String credenciales;
 
     public String getCredenciales() {
@@ -168,8 +199,8 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
     private static final int COD_FOTO = 20;
     ///////-Elementos del layout
     Spinner listaDepartamentos, listaMunicipios, listaGenero;
-    EditText campoNombre, campoApellido, campoFechaNacimiento, campoCorreo;
-    TextView campoMunicipio,campoDepartamento,campoGenero;
+    EditText campoNombre, campoApellido, campoCorreo;
+    TextView campoMunicipio,campoDepartamento,campoGenero,campoFechaNacimiento;
     ImageView imagenUsuario, imagenCamara;
     ImageView editarGenero,editarFecha,editarDepartamento,editarMunicipio;
     Button btnRegistro,btnFalso;
@@ -284,6 +315,7 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 if (position != 0) {
+                    setValidacionDepartamento(2);
                     setPosicion(position);
                     setDepartamento(ArrayDepartamentos.get(position));
                     cargarListaMunicipios();
@@ -308,7 +340,7 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
                     setGenero(ArrayGenero.get(i));
                     setValidacionGenero(2);
                 } else {
-                    setValidacionGenero(10);
+
                 }
 
             }
@@ -318,7 +350,6 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
 
             }
         });
-
 
         campoGenero = vista.findViewById(R.id.campoGeneroConfig);
         campoFechaNacimiento = vista.findViewById(R.id.campoFechaConfig);
@@ -331,6 +362,7 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
             public void onClick(View view) {
                 campoGenero.setVisibility(View.INVISIBLE);
                 listaGenero.setVisibility(View.VISIBLE);
+                setValidacionGenero(10);
             }
         });
 
@@ -338,8 +370,8 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
         editarFecha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                showDialogFecha();
+                setValidacionFecha(10);
+                //showDialogFecha();
             }
         });
 
@@ -351,6 +383,7 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
                 listaDepartamentos.setVisibility(View.VISIBLE);
                 campoMunicipio.setVisibility(View.INVISIBLE);
                 listaMunicipios.setVisibility(View.VISIBLE);
+                setValidacionMunicipio(10);
             }
         });
 
@@ -374,6 +407,7 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
             @Override
             public void onClick(View view) {
                 opcionesCapturaFoto();
+                setValidacionImagenusuario1(10);
             }
         });
         //
@@ -381,7 +415,13 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
         btnRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                actualizarUsuarioss();
+                if (getValidacionDepartamento()==10 || getValidacionFecha()==10 || getValidacionGenero()==10 || getValidacionMunicipio()==10){
+                    Toast.makeText(getContext(),"Debe llenar todos los campos",Toast.LENGTH_SHORT).show();
+                }else {
+                    actualizarUsuarios();
+                }
+
+
             }
         });
 
@@ -458,6 +498,7 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
                         startActivityForResult(intent.createChooser(intent,"Seleccione"),COD_SELECCIONA);
                     }else{
                         dialogInterface.dismiss();
+                        setValidacionImagenusuario1(2);
                     }
                 }
             }
@@ -507,6 +548,7 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
                 if (data.getData()==null){
                     Toast.makeText(getContext(),"No se eligio ninguna imagen",Toast.LENGTH_SHORT).show();
                 }
+
                 imagenUsuario.setImageURI(miPath);
 
                 try {
@@ -529,7 +571,7 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
 
                 bitmap= BitmapFactory.decodeFile(path);
                 imagenUsuario.setImageBitmap(bitmap);
-
+                setValidacionImagenusuario1(2);
                 break;
         }
         bitmap=redimensionarImagen(bitmap,600,800);
@@ -558,6 +600,7 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
             @Override
             public void onResponse(Bitmap response) {
                 imagenUsuario.setImageBitmap(response);
+
             }
         }, 0, 0, ImageView.ScaleType.CENTER, null, new Response.ErrorListener() {
             @Override
@@ -575,10 +618,6 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
         byte[] imagenByte=array.toByteArray();
         String imagenString= Base64.encodeToString(imagenByte, Base64.DEFAULT);
         return imagenString;
-    }
-
-    private void actualizarUsuarioss() {
-
     }
 
 
@@ -637,7 +676,7 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
                                 setMunicipio(ArrayMunicipios.get(i));
                                 setValidacionMunicipio(2);
                             }else {
-                                setValidacionMunicipio(10);
+
                             }
                         }
 
@@ -672,6 +711,7 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                setUrlImagenUsuario(miUsuario.getRutaImagen().toString());
                 mostrarImg(miUsuario.getRutaImagen().toString());
                 campoNombre.setText(miUsuario.getNombres().toString());
                 campoApellido.setText(miUsuario.getApellidos().toString());
@@ -682,6 +722,74 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
                 campoMunicipio.setText(miUsuario.getMunicipio().toString());
                 break;
         }
+
+    }
+
+    private void actualizarUsuarios() {
+        //Toast.makeText(getContext(),"Has llenado todos los campos",Toast.LENGTH_SHORT).show();
+        String url;
+        url = "http://"+getContext().getString(R.string.ip2)+"/apolunios/actualizarUsuario.php?";
+
+        stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                //pDialog.hide();
+
+                if (response.trim().equalsIgnoreCase("actualiza")){
+                    // etiNombre.setText("");
+                    //  txtDocumento.setText("");
+                    //   etiProfesion.setText("");
+                    Toast.makeText(getContext(),"Se ha Actualizado con exito",Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getContext(),"No se ha Actualizado ",Toast.LENGTH_SHORT).show();
+                    Log.i("RESPUESTA: ",""+response);
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(),"No se ha podido conectar",Toast.LENGTH_SHORT).show();
+                //pDialog.hide();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                String nombres = campoNombre.getText().toString();
+                String apellidos = campoApellido.getText().toString();
+                String genero = getGenero();
+                String correo = campoCorreo.getText().toString();
+                String fechaNacimiento = campoFechaNacimiento.getText().toString();
+                String departamento = getDepartamento();
+                String municipio = getMunicipio();
+                String rutaImagen = convertirImgString(bitmap);
+
+
+
+                /*String nombres = "aqui ";
+                String apellidos = "aqui ";
+                String genero = "aqui";
+                String correo = "aqui";
+                String fechaNacimiento = "en";
+                String departamento = "aqugen";
+                String municipio = "aqagen";
+                String rutaImagen = "akkkkki";*/
+
+
+                Map<String, String> parametros = new HashMap<>();
+                parametros.put("nombres", nombres);
+                parametros.put("apellidos", apellidos);
+                parametros.put("genero", genero);
+                parametros.put("correo", correo);
+                parametros.put("fechaNacimiento", fechaNacimiento);
+                parametros.put("departamento", departamento);
+                parametros.put("municipio", municipio);
+                parametros.put("rutaImagen", rutaImagen);
+
+                return parametros;
+            }
+        };
+        request.add(stringRequest);
 
     }
 

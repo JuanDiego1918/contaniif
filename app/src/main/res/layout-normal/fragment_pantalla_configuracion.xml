@@ -48,7 +48,7 @@
                 android:layout_below="@id/imagenUsuario"
                 android:layout_marginTop="12dp">
 
-                <TableRow>//Columna nombre
+                <TableRow>
 
                     <TextView
                         android:id="@+id/txtNombre"
@@ -67,7 +67,7 @@
                         android:hint="Nombres" />
                 </TableRow>
 
-                <TableRow>
+                <TableRow android:layout_marginBottom="10dp">
                     <TextView
                         android:textSize="16dp"
                         android:id="@+id/txtApellido"
@@ -84,7 +84,7 @@
                         android:hint="Apellidos" />
                 </TableRow>
 
-                <TableRow>
+                <TableRow android:layout_marginBottom="15dp">
                     <TextView
                         android:textSize="16dp"
                         android:layout_width="14dp"
@@ -94,23 +94,24 @@
                         android:textColor="#000"
                         android:text="Naci el:"/>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/campoFechaConfig"
-                        android:layout_width="162dp"
+                        android:layout_width="122dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="18dp"
                         android:layout_height="wrap_content"
-                        android:textColorHint="#000"
+                        android:textColor="#000"
                         android:hint="Fecha" />
 
                     <ImageView
                         android:id="@+id/imagenEditarFechaNacimiento"
-                        android:layout_marginTop="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/lapiz" />
 
                 </TableRow>
 
-                <TableRow>
+                <TableRow android:layout_marginBottom="10dp">
                     <TextView
                         android:textSize="16dp"
                         android:layout_width="102dp"
@@ -147,7 +148,7 @@
                 </TableRow>
 
 
-                <TableRow>
+                <TableRow android:layout_marginBottom="10dp">
                     <TextView
                         android:textSize="16dp"
                         android:layout_width="102dp"
@@ -186,7 +187,7 @@
 
                 </TableRow>
 
-                <TableRow>
+                <TableRow android:layout_marginBottom="10dp">
                     <TextView
                         android:textSize="16dp"
                         android:layout_width="82dp"
@@ -218,7 +219,7 @@
                     </RelativeLayout>
                 </TableRow>
 
-                <TableRow>
+                <TableRow >
                     <TextView
                         android:textSize="16dp"
                         android:layout_width="102dp"
