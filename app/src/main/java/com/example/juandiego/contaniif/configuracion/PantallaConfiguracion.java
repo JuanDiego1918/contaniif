@@ -69,6 +69,81 @@ import java.util.Map;
 public class PantallaConfiguracion extends Fragment implements Response.Listener<JSONObject>,Response.ErrorListener {
     int posicion;
     int accion;
+    String generoo;
+    String departamentoo;
+    String municipioo;
+    String rutaImagenn;
+
+    public String getGeneroo() {
+        return generoo;
+    }
+
+    public void setGeneroo(String generoo) {
+        this.generoo = generoo;
+    }
+
+    public String getDepartamentoo() {
+        return departamentoo;
+    }
+
+    public void setDepartamentoo(String departamentoo) {
+        this.departamentoo = departamentoo;
+    }
+
+    public String getMunicipioo() {
+        return municipioo;
+    }
+
+    public void setMunicipioo(String municipioo) {
+        this.municipioo = municipioo;
+    }
+
+    public String getRutaImagenn() {
+        return rutaImagenn;
+    }
+
+    public void setRutaImagenn(String rutaImagenn) {
+        this.rutaImagenn = rutaImagenn;
+    }
+
+    public boolean isSeleccionaGenero() {
+        return seleccionaGenero;
+    }
+
+    public void setSeleccionaGenero(boolean seleccionaGenero) {
+        this.seleccionaGenero = seleccionaGenero;
+    }
+
+    public boolean isSeleccionaImagen() {
+        return SeleccionaImagen;
+    }
+
+    public void setSeleccionaImagen(boolean seleccionaImagen) {
+        SeleccionaImagen = seleccionaImagen;
+    }
+
+    public boolean isSeleccionaDepartamento() {
+        return seleccionaDepartamento;
+    }
+
+    public void setSeleccionaDepartamento(boolean seleccionaDepartamento) {
+        this.seleccionaDepartamento = seleccionaDepartamento;
+    }
+
+    boolean seleccionaGenero;
+    boolean SeleccionaImagen;
+    boolean seleccionaDepartamento;
+
+    public boolean isSeleccionaImagenusuario() {
+        return seleccionaImagenusuario;
+    }
+
+    public void setSeleccionaImagenusuario(boolean seleccionaImagenusuario) {
+        this.seleccionaImagenusuario = seleccionaImagenusuario;
+    }
+
+    boolean seleccionaImagenusuario;
+
     String genero;
     String municipio;
     String departamento;
@@ -319,6 +394,7 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
                     setPosicion(position);
                     setDepartamento(ArrayDepartamentos.get(position));
                     cargarListaMunicipios();
+                    seleccionaDepartamento = true;
                 } else {
 
                 }
@@ -339,6 +415,8 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
                 if (i != 0) {
                     setGenero(ArrayGenero.get(i));
                     setValidacionGenero(2);
+                    setGeneroo(ArrayGenero.get(i));
+                    seleccionaGenero=true;;
                 } else {
 
                 }
@@ -711,6 +789,22 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
+                if (seleccionaGenero==false){
+                    setGeneroo(miUsuario.getGenero().toString());
+                }
+
+                if (seleccionaDepartamento==false){
+                    setDepartamentoo(miUsuario.getDepartamento().toString());
+                    setMunicipioo(miUsuario.getMunicipio().toString());
+                }
+
+                if (seleccionaImagenusuario==false){
+                    setRutaImagenn(convertirImgString(bitmap));
+                }else {
+                    setRutaImagenn(convertirImgString(bitmap));
+                }
+
                 setUrlImagenUsuario(miUsuario.getRutaImagen().toString());
                 mostrarImg(miUsuario.getRutaImagen().toString());
                 campoNombre.setText(miUsuario.getNombres().toString());
@@ -753,28 +847,18 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
                 //pDialog.hide();
             }
         }){
+
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
+
                 String nombres = campoNombre.getText().toString();
                 String apellidos = campoApellido.getText().toString();
-                String genero = getGenero();
+                String genero = generoo;
                 String correo = campoCorreo.getText().toString();
                 String fechaNacimiento = campoFechaNacimiento.getText().toString();
-                String departamento = getDepartamento();
-                String municipio = getMunicipio();
-                String rutaImagen = convertirImgString(bitmap);
-
-
-
-                /*String nombres = "aqui ";
-                String apellidos = "aqui ";
-                String genero = "aqui";
-                String correo = "aqui";
-                String fechaNacimiento = "en";
-                String departamento = "aqugen";
-                String municipio = "aqagen";
-                String rutaImagen = "akkkkki";*/
-
+                String departamento = departamentoo;
+                String municipio = municipioo;
+                String rutaImagen = rutaImagenn;
 
                 Map<String, String> parametros = new HashMap<>();
                 parametros.put("nombres", nombres);
