@@ -184,7 +184,7 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
     Dialog myDialogBuena;
     Dialog myDialogMala;
     ArrayList<String> listaSeleccionada;
-    int correctoSeleccionMultiple=0;
+    int correctoSeleccionMultiple = 0;
     PreguntasVo preguntas;
 
     public Pantalla_empezar() {
@@ -281,12 +281,12 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
         // getFragmentManager().beginTransaction().replace(R.id.fragmentPregunta1,miFragment).commit();
 
 
-        Bundle miBundle=getArguments();
-        if (miBundle!=null){
-            numeroPregunta=miBundle.getInt("numeroPregunta");
-            Toast.makeText(getContext(),"j "+numeroPregunta,Toast.LENGTH_SHORT).show();
-        }else {
-            numeroPregunta=0;
+        Bundle miBundle = getArguments();
+        if (miBundle != null) {
+            numeroPregunta = miBundle.getInt("numeroPregunta");
+            Toast.makeText(getContext(), "j " + numeroPregunta, Toast.LENGTH_SHORT).show();
+        } else {
+            numeroPregunta = 0;
         }
         return vista;
     }
@@ -359,18 +359,18 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
     }
 
     private void revisar(boolean revisar) {
-        if (revisar==true){
-            Toast.makeText(getContext(),"Tiempo perfecto"+tiempoCapturado +" BD "+preguntas.getTiempoDemora() * 1000,Toast.LENGTH_SHORT).show();
-            if (tiempoCapturado<preguntas.getTiempoDemora()){
-                Toast.makeText(getContext(),"Tiempo perfecto",Toast.LENGTH_SHORT).show();
-            }else {
-                Toast.makeText(getContext(),"Te Pasas ",Toast.LENGTH_SHORT).show();
+        if (revisar == true) {
+            Toast.makeText(getContext(), "Tiempo perfecto" + tiempoCapturado + " BD " + preguntas.getTiempoDemora() * 1000, Toast.LENGTH_SHORT).show();
+            if (tiempoCapturado < preguntas.getTiempoDemora()) {
+                Toast.makeText(getContext(), "Tiempo perfecto", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getContext(), "Te Pasas ", Toast.LENGTH_SHORT).show();
             }
-            Toast.makeText(getContext(),"Puntaje "+getPuntage() + "Tiempo "+mTimeLeftInMillis +" Pregunta    "+preguntas.getPregunta(),Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Puntaje " + getPuntage() + "Tiempo " + mTimeLeftInMillis + " Pregunta    " + preguntas.getPregunta(), Toast.LENGTH_SHORT).show();
         }
-        if (numeroPregunta<=10){
+        if (numeroPregunta <= 10) {
             puente.reinciar(numeroPregunta);
-        }else {
+        } else {
             puente.pantalla(1);
         }
         btnContinuar.setVisibility(View.INVISIBLE);
@@ -482,7 +482,7 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
             informacion = preguntas.getRespuesta();
             informacion2 = preguntas.getOpciones();
 
-            if (numeroPregunta!=0){
+            if (numeroPregunta != 0) {
                 resetTimer();
             }
 
@@ -573,22 +573,22 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
                     }
                     if (listaSeleccionada.size() == listaRespuesta.size()) {
                         for (int i = 0; i < listaSeleccionada.size(); i++) {
-                            if (listaRespuesta.contains(listaSeleccionada.get(i))){
+                            if (listaRespuesta.contains(listaSeleccionada.get(i))) {
                                 correctoSeleccionMultiple++;
                             }
                         }
-                        if (correctoSeleccionMultiple==listaRespuesta.size()){
+                        if (correctoSeleccionMultiple == listaRespuesta.size()) {
                             setResultado("correcto");
-                        }else{
+                        } else {
                             setResultado("incorrecto");
                         }
-                    }else{
+                    } else {
                         setResultado("incorrecto");
                     }
                     comparar();
                 }
             });
-        }else if (getTipoPregunta()==4){
+        } else if (getTipoPregunta() == 4) {
             cargarWebservices();
         }
 
@@ -616,7 +616,7 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
         } else {
             showPopup2(getRetroMala());
         }
-        tiempoCapturado=i;
+        tiempoCapturado = i;
         numeroPregunta++;
     }
 
