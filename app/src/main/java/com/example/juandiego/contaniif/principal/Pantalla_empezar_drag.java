@@ -332,6 +332,7 @@ public class Pantalla_empezar_drag extends Fragment implements Response.Listener
         JSONObject jsonObject = null;
         final ArrayList<String> lista = new ArrayList<>();
         try {
+            ///
             jsonObject = json.getJSONObject(i);
             for (int i = 0; i < json.length(); i++) {
                 jsonObject = json.getJSONObject(i);

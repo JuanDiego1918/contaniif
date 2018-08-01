@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingRight="12dp"
+    android:background="@drawable/degradado"
     android:paddingLeft="12dp"
-    tools:context=".acercade.Pantalla_acercade"
-    android:background="@drawable/degradado">
+    android:paddingRight="12dp"
+    tools:context=".acercade.Pantalla_acercade">
 
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
@@ -25,11 +25,11 @@
 
 
         <ImageView
+            android:id="@+id/misionVisionFondo"
             android:layout_width="match_parent"
             android:layout_height="44dp"
-            android:id="@+id/misionVisionFondo"
             android:layout_marginTop="392dp"
-            android:background="@drawable/card_principal"/>
+            android:background="@drawable/card_principal" />
 
 
         <ImageView
@@ -61,21 +61,20 @@
             android:src="@drawable/iconoequipodesarrollo" />
 
 
-
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="68dp"
             android:layout_height="54dp"
-            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="103dp"
-            android:layout_marginTop="25dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="23dp"
             android:src="@drawable/iconoacercade1" />
 
         <ScrollView
             android:layout_width="304dp"
             android:layout_height="265dp"
-            android:layout_marginLeft="10dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="88dp"
             android:scrollbarThumbVertical="@drawable/scroll_predesing">
 
@@ -89,7 +88,7 @@
                 android:inputType="textMultiLine"
                 android:scrollbarThumbVertical="@drawable/scroll_predesing"
                 android:text='ContaNIIF es una estrategia didáctica activa de aprendizaje que incentivara al aprendiz, al instructor y al empresario para estar actualizando los conocimientos en la nueva normatividad contable, financiera y tributaria que regula a nuestro país.'
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="#FFF"
                 android:textSize="19sp" />
         </ScrollView>
@@ -111,11 +110,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
-            android:textSize="15sp"
-            android:textColor="#FFF"
             android:layout_marginBottom="80dp"
             android:layout_marginStart="60dp"
-            android:text="Acerca de nosotros" />
+            android:text="Acerca de nosotros"
+            android:textColor="#FFF"
+            android:textSize="15sp" />
 
 
     </RelativeLayout>
