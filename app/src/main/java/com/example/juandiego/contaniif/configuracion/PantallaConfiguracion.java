@@ -394,7 +394,9 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
                     setPosicion(position);
                     setDepartamento(ArrayDepartamentos.get(position));
                     cargarListaMunicipios();
-                    seleccionaDepartamento = true;
+                    setDepartamentoo(ArrayDepartamentos.get(position));
+                    setSeleccionaDepartamento(true);
+                    //seleccionaDepartamento = true;
                 } else {
 
                 }
@@ -416,7 +418,8 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
                     setGenero(ArrayGenero.get(i));
                     setValidacionGenero(2);
                     setGeneroo(ArrayGenero.get(i));
-                    seleccionaGenero=true;;
+                    setSeleccionaGenero(true);
+                    //seleccionaGenero=true;
                 } else {
 
                 }
@@ -481,13 +484,13 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
         //
         imagenUsuario = vista.findViewById(R.id.imagenUsuario);
         imagenCamara = vista.findViewById(R.id.imagenCamara);
-        imagenCamara.setOnClickListener(new View.OnClickListener() {
+/*        imagenCamara.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 opcionesCapturaFoto();
                 setValidacionImagenusuario1(10);
             }
-        });
+        });*/
         //
         btnRegistro = vista.findViewById(R.id.btnRegistrar);
         btnRegistro.setOnClickListener(new View.OnClickListener() {
@@ -751,6 +754,7 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                             if (i!=0){
+                                setMunicipioo(ArrayMunicipios.get(i));
                                 setMunicipio(ArrayMunicipios.get(i));
                                 setValidacionMunicipio(2);
                             }else {
@@ -800,9 +804,9 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
                 }
 
                 if (seleccionaImagenusuario==false){
-                    setRutaImagenn(convertirImgString(bitmap));
+                    setRutaImagenn(miUsuario.getRutaImagen().toString());
                 }else {
-                    setRutaImagenn(convertirImgString(bitmap));
+                    setRutaImagenn(miUsuario.getRutaImagen().toString());
                 }
 
                 setUrlImagenUsuario(miUsuario.getRutaImagen().toString());
@@ -854,7 +858,7 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
                 String nombres = campoNombre.getText().toString();
                 String apellidos = campoApellido.getText().toString();
                 String genero = generoo;
-                String correo = campoCorreo.getText().toString();
+                String correo = getCredenciales();
                 String fechaNacimiento = campoFechaNacimiento.getText().toString();
                 String departamento = departamentoo;
                 String municipio = municipioo;
