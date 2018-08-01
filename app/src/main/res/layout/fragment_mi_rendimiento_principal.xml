@@ -40,7 +40,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Puntos 500"
-                    android:textSize="40dp"
+                    android:textSize="30dp"
                     android:textColor="#fff"/>
             </LinearLayout>
 
@@ -66,7 +66,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Canjes"
-                    android:textSize="40dp"
+                    android:textSize="30dp"
                     android:textColor="#fff"/>
             </LinearLayout>
 
@@ -92,7 +92,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Activos"
-                    android:textSize="40dp"
+                    android:textSize="30dp"
                     android:textColor="#fff"/>
             </LinearLayout>
 
@@ -117,7 +117,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Comentarios"
-                    android:textSize="40dp"
+                    android:textSize="30dp"
                     android:textColor="#fff"/>
             </LinearLayout>
         </LinearLayout>
