@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -27,6 +28,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -34,6 +36,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 ;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.juandiego.contaniif.R;
 import com.example.juandiego.contaniif.adapter.PaginacionNumeroAdapter;
 import com.example.juandiego.contaniif.adapter.PreguntasAdapter;
@@ -51,6 +55,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -69,10 +75,30 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    int puntos;
+
+    public int getPuntos() {
+        return puntos;
+    }
+
+    public void setPuntos(int puntos) {
+        this.puntos = puntos;
+    }
+
+    String credenciales;
+
+    public String getCredenciales() {
+        return credenciales;
+    }
+
+    public void setCredenciales(String credenciales) {
+        this.credenciales = credenciales;
+    }
 
     int tiempoCapturado;
     ArrayList<String> listaPre;
     String retroBuena;
+
     int contador = 0;
 
     int numeroPregunta;
@@ -177,6 +203,7 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
     String informacion;
     String informacion2;
     ProgressDialog dialog;
+    StringRequest stringRequest;
     RecyclerView recyclerViewUsuarios;
     ArrayList<PreguntasVo> listaPreguntas;
     JsonObjectRequest jsonObjectRequest;
@@ -225,6 +252,7 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View vista = inflater.inflate(R.layout.fragment_pantalla_empezar, container, false);
+        request = Volley.newRequestQueue(getContext());
         miScroll = vista.findViewById(R.id.scroll);
 
         myDialogBuena = new Dialog(getContext());
@@ -269,7 +297,7 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
             btnContinuar2.setVisibility(View.INVISIBLE);
         }
 
-
+        cargarCredenciales();
         cargarWebservices();
 
         //fragmentBolas = vista.findViewById(R.id.fragmentBolitas);
@@ -362,13 +390,14 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
 
     private void revisar(boolean revisar) {
         if (revisar == true) {
-            Toast.makeText(getContext(), "Tiempo perfecto" + tiempoCapturado + " BD " + preguntas.getTiempoDemora() * 1000, Toast.LENGTH_SHORT).show();
-            if (tiempoCapturado < preguntas.getTiempoDemora()) {
-                Toast.makeText(getContext(), "Tiempo perfecto", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(getContext(), "Te Pasas ", Toast.LENGTH_SHORT).show();
+          int puntos = puntage;
+
+            Toast.makeText(getContext(), "Tiempo perfecto" + tiempoCapturado + " BD " + preguntas.getTiempoDemora(), Toast.LENGTH_SHORT).show();
+            if (tiempoCapturado >preguntas.getTiempoDemora()) {
+                puntos = (puntage*75)/100;
             }
-            Toast.makeText(getContext(), "Puntaje " + getPuntage() + "Tiempo " + mTimeLeftInMillis + " Pregunta    " + preguntas.getPregunta(), Toast.LENGTH_SHORT).show();
+            enviarDatosPuntaje(puntos);
+
         }
         if (numeroPregunta <= 10) {
             puente.reinciar(numeroPregunta);
@@ -393,6 +422,63 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
         }
         btnContinuar.setVisibility(View.INVISIBLE);
         btnContinuar2.setVisibility(View.VISIBLE);
+    }
+
+
+
+
+    ///////////////////////////////VICTOR/////////////////////////////////
+
+
+    private void cargarCredenciales() {
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("Credenciales",Context.MODE_PRIVATE);
+        String credenciales = preferences.getString("correo","No existe el valor");
+        setCredenciales(credenciales);
+
+    }
+
+    private void enviarDatosPuntaje(int puntos) {
+
+        setPuntos(puntos);
+        String url;
+        url = "http://"+getContext().getString(R.string.ip2)+"/apolunios/registroEstadisticas.php?";
+        stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                //progreso.hide();
+                if (response.trim().equalsIgnoreCase("registra")) {
+//                    Toast.makeText(getContext(), "Registro de puntaje exitoso", Toast.LENGTH_SHORT).show();
+                } else {
+  //                  Toast.makeText(getContext(),"Puntaje no registrado", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progreso.hide();
+                Toast.makeText(getContext(), "No se pudo registrar el puntaje" + error.toString(), Toast.LENGTH_SHORT).show();
+            }
+
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                String idusuario = getCredenciales();
+                int idpregunta = preguntas.getId();
+                int tiempo = tiempoCapturado;
+                int puntaje = getPuntos();
+
+                Map<String, String> parametros = new HashMap<>();
+                parametros.put("idusuario", idusuario);
+                parametros.put("idpregunta", Integer.toString(idpregunta));
+                parametros.put("tiempo", Integer.toString(tiempo));
+                parametros.put("puntaje", Integer.toString(puntaje));
+                return parametros;
+            }
+        };
+
+        request.add(stringRequest);
     }
 
 

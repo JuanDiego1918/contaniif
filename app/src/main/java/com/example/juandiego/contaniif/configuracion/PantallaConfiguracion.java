@@ -489,6 +489,7 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
             public void onClick(View view) {
                 opcionesCapturaFoto();
                 setValidacionImagenusuario1(10);
+                setSeleccionaImagenusuario(true);
             }
         });*/
         //
@@ -499,6 +500,9 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
                 if (getValidacionDepartamento()==10 || getValidacionFecha()==10 || getValidacionGenero()==10 || getValidacionMunicipio()==10){
                     Toast.makeText(getContext(),"Debe llenar todos los campos",Toast.LENGTH_SHORT).show();
                 }else {
+                    //setSeleccionaImagenusuario(false);
+                    //setSeleccionaDepartamento(false);
+                    //setSeleccionaGenero(false);
                     actualizarUsuarios();
                 }
 
@@ -545,7 +549,7 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
         String credenciales = preferences.getString("correo","No existe el valor");
         setCredenciales(credenciales);
         cargarDatosPerfil();
-        Toast.makeText(getContext(),"credenciales:" + getCredenciales(),Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(),"credenciales:" + getCredenciales(),Toast.LENGTH_SHORT).show();
 
     }
 
@@ -560,6 +564,7 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
         request2.add(jsonObjectRequest2);
         setAccion(2);
     }
+/////////////////////////////////////////////////////////Capturar imagen
 
     private void opcionesCapturaFoto() {
         final CharSequence[] opciones={"Tomar Foto","Elegir de Galeria","Cancelar"};
@@ -579,7 +584,6 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
                         startActivityForResult(intent.createChooser(intent,"Seleccione"),COD_SELECCIONA);
                     }else{
                         dialogInterface.dismiss();
-                        setValidacionImagenusuario1(2);
                     }
                 }
             }
@@ -629,7 +633,6 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
                 if (data.getData()==null){
                     Toast.makeText(getContext(),"No se eligio ninguna imagen",Toast.LENGTH_SHORT).show();
                 }
-
                 imagenUsuario.setImageURI(miPath);
 
                 try {
@@ -652,7 +655,7 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
 
                 bitmap= BitmapFactory.decodeFile(path);
                 imagenUsuario.setImageBitmap(bitmap);
-                setValidacionImagenusuario1(2);
+
                 break;
         }
         bitmap=redimensionarImagen(bitmap,600,800);
@@ -673,6 +676,17 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
         }
     }
 
+    private String convertirImgString(Bitmap bitmap) {
+        ByteArrayOutputStream array=new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,array);
+        byte[] imagenByte=array.toByteArray();
+        String imagenString= Base64.encodeToString(imagenByte, Base64.DEFAULT);
+        return imagenString;
+    }
+
+/////////////////////////////////////////////////////////
+
+
     private void mostrarImg(String rutaImagen) {
         String ip=getContext().getString(R.string.ip2);
 
@@ -681,7 +695,6 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
             @Override
             public void onResponse(Bitmap response) {
                 imagenUsuario.setImageBitmap(response);
-
             }
         }, 0, 0, ImageView.ScaleType.CENTER, null, new Response.ErrorListener() {
             @Override
@@ -693,13 +706,7 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
         request.add(imageRequest);
     }
 
-    private String convertirImgString(Bitmap bitmap) {
-        ByteArrayOutputStream array=new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,100,array);
-        byte[] imagenByte=array.toByteArray();
-        String imagenString= Base64.encodeToString(imagenByte, Base64.DEFAULT);
-        return imagenString;
-    }
+
 
 
 
@@ -805,8 +812,9 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
 
                 if (seleccionaImagenusuario==false){
                     setRutaImagenn(miUsuario.getRutaImagen().toString());
+
                 }else {
-                    setRutaImagenn(miUsuario.getRutaImagen().toString());
+                    setRutaImagenn(convertirImgString(bitmap));
                 }
 
                 setUrlImagenUsuario(miUsuario.getRutaImagen().toString());
@@ -826,7 +834,12 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
     private void actualizarUsuarios() {
         //Toast.makeText(getContext(),"Has llenado todos los campos",Toast.LENGTH_SHORT).show();
         String url;
-        url = "http://"+getContext().getString(R.string.ip2)+"/apolunios/actualizarUsuario.php?";
+        if (seleccionaImagenusuario==true){
+            url = "http://"+getContext().getString(R.string.ip2)+"/apolunios/actualizarUsuario.php?";
+        }else {
+            url = "http://"+getContext().getString(R.string.ip2)+"/apolunios/actualizarUsuario2.php?";
+        }
+
 
         stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -837,7 +850,7 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
                     // etiNombre.setText("");
                     //  txtDocumento.setText("");
                     //   etiProfesion.setText("");
-                    Toast.makeText(getContext(),"Se ha Actualizado con exito",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),"Se ha actualizado con exito",Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(getContext(),"No se ha Actualizado ",Toast.LENGTH_SHORT).show();
                     Log.i("RESPUESTA: ",""+response);
@@ -862,7 +875,7 @@ public class PantallaConfiguracion extends Fragment implements Response.Listener
                 String fechaNacimiento = campoFechaNacimiento.getText().toString();
                 String departamento = departamentoo;
                 String municipio = municipioo;
-                String rutaImagen = rutaImagenn;
+                String rutaImagen = getRutaImagenn();
 
                 Map<String, String> parametros = new HashMap<>();
                 parametros.put("nombres", nombres);

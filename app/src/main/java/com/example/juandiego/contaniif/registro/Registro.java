@@ -571,7 +571,10 @@ public class Registro extends Fragment implements Response.Listener<JSONObject>,
             public void onResponse(String response) {
                 //progreso.hide();
                 if (response.trim().equalsIgnoreCase("registra")) {
-                    Toast.makeText(getContext(), "NO SE REGISTRA " + response, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "SE REGISTRA " + response, Toast.LENGTH_SHORT).show();
+                    android.support.v4.app.Fragment miFragment=null;
+                    miFragment=new Registro();
+                    getFragmentManager().beginTransaction().replace(R.id.content_main,miFragment).commit();
                 } else {
                     Toast.makeText(getContext(),"Se ha registrado exitosamente", Toast.LENGTH_SHORT).show();
                     /*progreso.hide();
