@@ -1,12 +1,20 @@
 package com.example.juandiego.contaniif.mi_rendimiento;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.juandiego.contaniif.R;
 
@@ -28,6 +36,8 @@ public class MiRendimiento extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    Dialog myDialogComent;
+    LinearLayout comentario;
     private OnFragmentInteractionListener mListener;
 
     public MiRendimiento() {
@@ -64,8 +74,40 @@ public class MiRendimiento extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mi_rendimiento_principal, container, false);
+        // Inflate the layout for this fragment}
+        View vista=inflater.inflate(R.layout.fragment_mi_rendimiento_principal, container, false);
+
+        comentario=vista.findViewById(R.id.comentarios);
+        myDialogComent= new Dialog(getContext());
+
+        comentario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                VentanaEmergente();
+            }
+        });
+        return vista;
+    }
+
+    private void VentanaEmergente() {
+        Button enviar;
+        final EditText coment;
+
+        myDialogComent.setContentView(R.layout.popup_comentarios);
+
+        coment=myDialogComent.findViewById(R.id.comentariotxt);
+        enviar = myDialogComent.findViewById(R.id.enviar);
+        //comentario=coment.getText().toString();
+        enviar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"Comentario "+coment.getText().toString(),Toast.LENGTH_SHORT).show();
+                myDialogComent.dismiss();
+            }
+        });
+
+        myDialogComent.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        myDialogComent.show();
     }
 
     // TODO: Rename method, update argument and hook method into UI event
