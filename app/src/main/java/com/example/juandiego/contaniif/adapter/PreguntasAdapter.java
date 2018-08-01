@@ -16,17 +16,6 @@ import java.util.ArrayList;
 
 public class PreguntasAdapter extends RecyclerView.Adapter<PreguntasAdapter.UsuariosHolder> implements  View.OnClickListener,View.OnFocusChangeListener{
 
-    //int posicionPregunta;
-    Context context;
-  /*  public int getPosicionPregunta() {
-        return posicionPregunta;
-    }
-
-    public void setPosicionPregunta(int posicionPregunta) {
-        this.posicionPregunta = posicionPregunta;
-    }*/
-
-
     private int selectedPosition = -1;
 
     ArrayList<PreguntasVo> listaUsuarios;
@@ -69,11 +58,6 @@ public class PreguntasAdapter extends RecyclerView.Adapter<PreguntasAdapter.Usua
     public int getItemCount() {
         return listaUsuarios.size();
     }
-
-  //  public void setOnClickListener(View.OnClickListener listener){
-    //    this.listener=listener;
-   // }
-
 
     @Override
     public void onClick(View view) {

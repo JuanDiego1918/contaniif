@@ -313,6 +313,9 @@ public class Pantalla_empezar_drag extends Fragment implements Response.Listener
     @Override
     public void onDetach() {
         super.onDetach();
+        if (CountDownTimer != null) {
+            CountDownTimer.cancel();
+        }
         mListener = null;
     }
 
@@ -544,8 +547,7 @@ public class Pantalla_empezar_drag extends Fragment implements Response.Listener
             @Override
             public void onClick(View v) {
                 myDialogBuena.dismiss();
-                fragment = new Pantalla_empezar_drag();
-                getFragmentManager().beginTransaction().replace(R.id.content_main, fragment).commit();
+                cargarWebService();
                 btnContinuar.setVisibility(View.INVISIBLE);
                 btnContinuar2.setVisibility(View.VISIBLE);
             }
@@ -572,8 +574,7 @@ public class Pantalla_empezar_drag extends Fragment implements Response.Listener
             @Override
             public void onClick(View v) {
                 myDialogMala.dismiss();
-                fragment = new Pantalla_empezar_drag();
-                getFragmentManager().beginTransaction().replace(R.id.content_main, fragment).commit();
+                cargarWebService();
                 btnContinuar.setVisibility(View.INVISIBLE);
                 btnContinuar2.setVisibility(View.VISIBLE);
 

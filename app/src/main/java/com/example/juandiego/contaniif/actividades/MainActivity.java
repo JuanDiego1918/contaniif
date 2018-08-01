@@ -23,6 +23,7 @@ import com.example.juandiego.contaniif.interfaces.AllFragments;
 import com.example.juandiego.contaniif.interfaces.Puente;
 import com.example.juandiego.contaniif.mi_rendimiento.MiRendimiento;
 import com.example.juandiego.contaniif.principal.PantallaPrincipal;
+import com.example.juandiego.contaniif.principal.Pantalla_empezar;
 import com.example.juandiego.contaniif.principal.PrimerFragment;
 import com.example.juandiego.contaniif.principal.SinConexionInternet;
 import com.example.juandiego.contaniif.registro.Registro;
@@ -179,6 +180,16 @@ public class MainActivity extends AppCompatActivity implements AllFragments, Pue
         Intent miIntent=new Intent(getApplicationContext(),VideosActivity.class);
         miIntent.putExtras(miBundle);
         startActivity(miIntent);
+    }
+
+    @Override
+    public void reinciar(int numeroPregunta) {
+        Bundle miBundle=new Bundle();
+
+        miBundle.putInt("numeroPregunta",numeroPregunta);
+        miFragment=new Pantalla_empezar();
+        miFragment.setArguments(miBundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_main,miFragment).commit();
     }
 
     @Override

@@ -21,21 +21,6 @@ import java.util.ArrayList;
 
 public class PreguntasSeleccionMultiple extends RecyclerView.Adapter<PreguntasSeleccionMultiple.UsuariosHolder> implements  View.OnClickListener,View.OnFocusChangeListener{
 
-
-    Pantalla_empezar empezar;
-    //int posicionPregunta;
-    Context context;
-  /*  public int getPosicionPregunta() {
-        return posicionPregunta;
-    }
-
-    public void setPosicionPregunta(int posicionPregunta) {
-        this.posicionPregunta = posicionPregunta;
-    }*/
-
-
-    private int selectedPosition = -1;
-
     ArrayList<PreguntasVo> listaUsuarios;
     private View.OnClickListener listener;
     public PreguntasSeleccionMultiple(ArrayList<PreguntasVo> listaUsuarios) {
@@ -71,13 +56,6 @@ public class PreguntasSeleccionMultiple extends RecyclerView.Adapter<PreguntasSe
                 listaUsuarios.get(holder.getAdapterPosition()).setCheck(b);
             }
         });
-        if (selectedPosition == position) {
-            holder.respuesta.setBackgroundColor(Color.parseColor("#C4CDDA"));
-            //holder.respuesta.setSelected(true);
-        } else {
-            //if selected position is not equal to that mean view is not selected so change the cardview color to white back again
-            holder.respuesta.setBackgroundColor(Color.TRANSPARENT);
-        }
     }
 
     @Override
@@ -86,7 +64,7 @@ public class PreguntasSeleccionMultiple extends RecyclerView.Adapter<PreguntasSe
     }
 
     public void setOnClickListener(View.OnClickListener listener){
-       this.listener=listener;
+        this.listener=listener;
     }
 
 
@@ -104,21 +82,16 @@ public class PreguntasSeleccionMultiple extends RecyclerView.Adapter<PreguntasSe
 
     public class UsuariosHolder extends RecyclerView.ViewHolder {
         //TextView preguntaa;
-       // RadioGroup grupoRadio;
-       // Fragment fragment;
+        // RadioGroup grupoRadio;
+        // Fragment fragment;
         CheckBox respuesta;
         //int i = 0;
-       // boolean seleccion = false;
+        // boolean seleccion = false;
 
-    public UsuariosHolder(View itemView) {
-        super(itemView);
-        respuesta = itemView.findViewById(R.id.respuestaaaa);
-    }
+        public UsuariosHolder(View itemView) {
+            super(itemView);
+            respuesta = itemView.findViewById(R.id.respuestaaaa);
+        }
 
-    }
-    public void setSelectedPosition(int selectedPosition) {
-        this.selectedPosition = selectedPosition;
-        //when item selected notify the adapter
-        notifyDataSetChanged();
     }
 }

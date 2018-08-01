@@ -70,10 +70,12 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
     private String mParam1;
     private String mParam2;
 
+    int tiempoCapturado;
     ArrayList<String> listaPre;
     String retroBuena;
     int contador = 0;
 
+    int numeroPregunta;
 
     boolean isCheked = false;
 
@@ -183,6 +185,7 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
     Dialog myDialogMala;
     ArrayList<String> listaSeleccionada;
     int correctoSeleccionMultiple=0;
+    PreguntasVo preguntas;
 
     public Pantalla_empezar() {
         // Required empty public constructor
@@ -240,7 +243,7 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
         btnContinuar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               comparar();
+                comparar();
             }
         });
         listanumero = new ArrayList<>();
@@ -276,6 +279,15 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
 
         // miFragment = new FragmentPregunta1();
         // getFragmentManager().beginTransaction().replace(R.id.fragmentPregunta1,miFragment).commit();
+
+
+        Bundle miBundle=getArguments();
+        if (miBundle!=null){
+            numeroPregunta=miBundle.getInt("numeroPregunta");
+            Toast.makeText(getContext(),"j "+numeroPregunta,Toast.LENGTH_SHORT).show();
+        }else {
+            numeroPregunta=0;
+        }
         return vista;
     }
 
@@ -300,8 +312,7 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
         CountDownTimer.cancel();
         mTimeLeftInMillis = START_TIME_IN_MILLIS;
         i = reiniciar;
-        updateCountDownText();
-        starTime();
+
     }
 
     private void updateCountDownText() {
@@ -315,8 +326,9 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
         dialog.setMessage("Cargando..");
 //        dialog.show();
 
-        String ip = getContext().getString(R.string.ip);
-        String url = "http://" + ip + "wsPreguntasTipo1.php";
+        String ip = getContext().getString(R.string.ip2);
+        //String url = "http://" + ip + "wsPreguntasTipo1.php";
+        String url = "http://" + ip + "/apolunios/wsConsultaPreguntaPrueba1.php";
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
 //        request.add(jsonObjectRequest);
         VolleySingleton.getIntanciaVolley(getContext()).addToRequestQueue(jsonObjectRequest);
@@ -338,15 +350,31 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
             @Override
             public void onClick(View v) {
                 myDialogBuena.dismiss();
-                fragment = new Pantalla_empezar();
-                getFragmentManager().beginTransaction().replace(R.id.content_main, fragment).commit();
-                btnContinuar.setVisibility(View.INVISIBLE);
-                btnContinuar2.setVisibility(View.VISIBLE);
+                revisar(true);
             }
         });
 
         myDialogBuena.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         myDialogBuena.show();
+    }
+
+    private void revisar(boolean revisar) {
+        if (revisar==true){
+            Toast.makeText(getContext(),"Tiempo perfecto"+tiempoCapturado +" BD "+preguntas.getTiempoDemora() * 1000,Toast.LENGTH_SHORT).show();
+            if (tiempoCapturado<preguntas.getTiempoDemora()){
+                Toast.makeText(getContext(),"Tiempo perfecto",Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(getContext(),"Te Pasas ",Toast.LENGTH_SHORT).show();
+            }
+            Toast.makeText(getContext(),"Puntaje "+getPuntage() + "Tiempo "+mTimeLeftInMillis +" Pregunta    "+preguntas.getPregunta(),Toast.LENGTH_SHORT).show();
+        }
+        if (numeroPregunta<=10){
+            puente.reinciar(numeroPregunta);
+        }else {
+            puente.pantalla(1);
+        }
+        btnContinuar.setVisibility(View.INVISIBLE);
+        btnContinuar2.setVisibility(View.VISIBLE);
     }
 
 
@@ -366,15 +394,7 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
             @Override
             public void onClick(View v) {
                 myDialogMala.dismiss();
-                fragment = new Pantalla_empezar();
-                getFragmentManager().beginTransaction().replace(R.id.content_main, fragment).commit();
-                btnContinuar.setVisibility(View.INVISIBLE);
-                btnContinuar2.setVisibility(View.VISIBLE);
-
-                listanumero.get(numero).setColor("#e91e63");
-                numero++;
-                PaginacionNumeroAdapter miNumeroAdapter = new PaginacionNumeroAdapter(listanumero, getContext());
-                miRecyclerNumero.setAdapter(miNumeroAdapter);
+                revisar(false);
             }
         });
 
@@ -424,14 +444,14 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
     @Override
     public void onResponse(JSONObject response) {
 
-        PreguntasVo preguntas = null;
+        preguntas = null;
         JSONArray json = response.optJSONArray("pregunta");
         JSONObject jsonObject = null;
         listaPreguntas = new ArrayList<PreguntasVo>();
         listaImagenes = new ArrayList<String>();
 
         try {
-            jsonObject = json.getJSONObject(i);
+
             for (int i = 0; i < json.length(); i++) {
                 jsonObject = json.getJSONObject(i);
                 preguntas = new PreguntasVo();
@@ -454,29 +474,6 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
                 //setUrlImagen(preguntas.getOpciones());
                 dialog.hide();
             }
-
-            /*ArrayList<String> list = new ArrayList<>();
-            list.add("Carro");
-            list.add("Perro");
-            list.add("Veneca");
-            list.add("eminem");
-            list.add("Viki");
-            list.add("kjjsdhkjsah lkhasdkj");
-            for (int i = 0; i < 6; i++) {
-                preguntas = new PreguntasVo();
-                preguntas.setId(i);
-                preguntas.setPregunta("PREGUNTA " + i);
-                preguntas.setCategoria(i);
-                preguntas.setPuntaje(i);
-                preguntas.setTiempoDemora(i);
-                preguntas.setTipo(2);
-                preguntas.setOpciones(list.get(i));
-                preguntas.setRespuesta("Carro#&Perro#&Veneca");
-                preguntas.setRetobuena("retrobuena" + i);
-                preguntas.setRetromala("retromala" + i);
-                preguntas.setRutaImagen("opcion" + i);
-                listaPreguntas.add(preguntas);
-            }*/
             setRetroMala(preguntas.getRetromala());
             setRetroBuena(preguntas.getRetobuena());
             setTipoPregunta(preguntas.getTipo());
@@ -484,6 +481,10 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
             pregunta.setText(preguntas.getPregunta());
             informacion = preguntas.getRespuesta();
             informacion2 = preguntas.getOpciones();
+
+            if (numeroPregunta!=0){
+                resetTimer();
+            }
 
             mInitialTime = DateUtils.DAY_IN_MILLIS * 0 +
                     DateUtils.HOUR_IN_MILLIS * 0 +
@@ -587,37 +588,8 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
                     comparar();
                 }
             });
-            /*recyclerViewUsuarios.addOnItemTouchListener(new RecyclerViewOnClickListener(getContext(), new RecyclerViewOnClickListener.OnItemClickListener() {
-              @Override
-                public void onItemClick(View view, int position) {
-
-
-                  contador++;
-
-                    btnContinuar.setVisibility(View.VISIBLE);
-                    btnContinuar2.setVisibility(View.INVISIBLE);
-
-                    String enviaPregunta = listaPreguntas.get(recyclerViewUsuarios.getChildAdapterPosition(view)).getOpciones();
-                  for (int i = 0; i<contador;i++){
-                      listaPre = new ArrayList<String>();
-                      listaPre.add(listaPreguntas.get(recyclerViewUsuarios.getChildAdapterPosition(view)).getOpciones());
-                  }
-                  Toast.makeText(getContext(),"respuesta" + listaPre,Toast.LENGTH_SHORT).show();
-
-                    String enviaRespuesta = informacion;
-
-                    if (enviaPregunta.equalsIgnoreCase(informacion)) {
-                        setResultado("correcto");
-                    } else {
-                        setResultado("incorrecto");
-                    }
-
-                    adapter3.setSelectedPosition(position);
-               }
-           }));*/
         }else if (getTipoPregunta()==4){
-            fragment=new Pantalla_empezar_drag();
-            getFragmentManager().beginTransaction().replace(R.id.content_main, fragment).commit();
+            cargarWebservices();
         }
 
     }
@@ -638,13 +610,14 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
     }
 
 
-    private void comparar(){
-        resetTimer();
+    private void comparar() {
         if (getResultado().equalsIgnoreCase("correcto")) {
             showPopup(getRetroBuena());
         } else {
             showPopup2(getRetroMala());
         }
+        tiempoCapturado=i;
+        numeroPregunta++;
     }
 
 }
