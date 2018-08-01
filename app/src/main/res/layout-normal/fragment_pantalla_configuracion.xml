@@ -31,7 +31,7 @@
                 android:paddingRight="44dp"
                 android:src="@drawable/usuario" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <!--<de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="52dp"
                 android:id="@+id/imagenCamara"
                 android:layout_height="52dp"
@@ -39,7 +39,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginEnd="74dp"
                 android:layout_marginTop="81dp"
-                android:src="@drawable/editar" />
+                android:src="@drawable/editar" />-->
 
 
             <TableLayout
@@ -233,6 +233,7 @@
                         android:layout_width="162dp"
                         android:layout_height="wrap_content"
                         android:textColorHint="#000"
+                        android:editable="false"
                         android:hint="Correo" />
                 </TableRow>
 
