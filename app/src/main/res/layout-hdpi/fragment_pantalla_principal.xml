@@ -45,7 +45,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="18dp"
         android:layout_marginTop="55dp"
-        android:background="@drawable/copa" />
+        android:background="@drawable/mi_rendimiento" />
 
 
     <TextView

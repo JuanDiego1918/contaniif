@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.SinConexionInternet">
+    tools:context=".principal.SinConexionInternet">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -16,7 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="29dp"
-        android:src="@drawable/sin_internet" />
+        android:src="@drawable/mascota_error" />
 
     <TextView
         android:id="@+id/textView5"
