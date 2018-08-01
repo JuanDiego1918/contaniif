@@ -182,7 +182,7 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
     JsonObjectRequest jsonObjectRequest;
     RequestQueue request;
     Dialog myDialogBuena;
-    Dialog myDialogMala;
+    Dialog myDialogMala,MyDialogFinal;
     ArrayList<String> listaSeleccionada;
     int correctoSeleccionMultiple = 0;
     PreguntasVo preguntas;
@@ -229,6 +229,8 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
 
         myDialogBuena = new Dialog(getContext());
         myDialogMala = new Dialog(getContext());
+        MyDialogFinal=new Dialog(getContext());
+
         btnContinuar2 = vista.findViewById(R.id.btnContinuar2);
         btnContinuar = vista.findViewById(R.id.btnContinuar);
         btnContinuar.setVisibility(View.INVISIBLE);
@@ -371,7 +373,23 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
         if (numeroPregunta <= 10) {
             puente.reinciar(numeroPregunta);
         } else {
-            puente.pantalla(1);
+            Button finalizar;
+
+            MyDialogFinal.setContentView(R.layout.popup_terminar_preguntas);
+            //puntajeRespuestaMala.setText("+"+String.valueOf(getPuntage()));
+            finalizar = MyDialogFinal.findViewById(R.id.btnFinal);
+
+
+            finalizar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MyDialogFinal.dismiss();
+                    puente.pantalla(0);
+                }
+            });
+
+            MyDialogFinal.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            MyDialogFinal.show();
         }
         btnContinuar.setVisibility(View.INVISIBLE);
         btnContinuar2.setVisibility(View.VISIBLE);

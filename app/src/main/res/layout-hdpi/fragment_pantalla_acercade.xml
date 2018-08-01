@@ -90,7 +90,7 @@
         android:textSize="19sp"
         android:textAlignment="center"
         android:layout_toEndOf="@+id/imagenMision"
-        android:text='El "Acerca del semillero de investicación" es la paginas mas potente para llegar a su público objetivo. Es crucial que usted construya una agina de "Aceerca de Nosotros" en la que introduzca su negocio a sus clientes potenciales. Tener una buena pagina "Acerca de nosotrsos" es un componente vital para atraer a nuevos usuarios.' />
+        android:text='ContaNIIF es una estrategia didáctica activa de aprendizaje que incentivara al aprendiz, al instructor y al empresario para estar actualizando los conocimientos en la nueva normatividad contable, financiera y tributaria que regula a nuestro país.' />
 </ScrollView>
 
         <TextView

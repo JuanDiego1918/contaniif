@@ -6,7 +6,7 @@
     android:background="@drawable/degradado"
     android:paddingRight="12dp"
     android:paddingLeft="12dp"
-    tools:context=".fragmeents_acercade.AcercaDeNosotros">
+    tools:context=".acercade.AcercaDeNosotros">
 
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout

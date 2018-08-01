@@ -2,10 +2,10 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/degradado"
-    android:paddingRight="12dp"
-    android:paddingLeft="12dp"
     android:layout_height="match_parent"
+    android:background="@drawable/degradado"
+    android:paddingLeft="12dp"
+    android:paddingRight="12dp"
     tools:context=".fragmeents_acercade.MisionVision">
 
     <!-- TODO: Update blank fragment layout -->
@@ -22,10 +22,10 @@
 
         <ScrollView
             android:layout_width="271dp"
-            android:layout_marginLeft="10dp"
             android:layout_height="310dp"
-            android:scrollbarThumbVertical="@drawable/scroll_predesing"
-            android:layout_marginTop="118dp">
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="118dp"
+            android:scrollbarThumbVertical="@drawable/scroll_predesing">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -35,53 +35,56 @@
                 <TextView
                     android:layout_width="122dp"
                     android:layout_height="wrap_content"
-                    android:text="Misión"
-                    android:textColor="#FFF"
-                    android:textSize="17dp"
                     android:layout_marginLeft="12dp"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_marginTop="12dp"
+                    android:text="Misión y Visión "
+                    android:textColor="#FFF"
+                    android:textSize="17dp" />
 
                 <TextView
                     android:layout_width="242dp"
                     android:layout_height="wrap_content"
-                    android:text="El Grupo de Investigación sobre Política Exterior Peruana (GIPEP) busca profundizar en el análisis académico, teórico-práctico, acerca de esta política pública, con el objetivo de comprender las decisiones que adopta nuestro país, tanto a nivel regional como extrarregional."
-                    android:textColor="#FFF"
-                    android:textSize="15dp"
-                    android:inputType="textMultiLine"
                     android:layout_marginLeft="12dp"
-                    android:layout_marginTop="9dp"/>
+                    android:layout_marginTop="9dp"
+                    android:inputType="textMultiLine"
+                    android:text="Se espera un impacto a nivel Nacional para los aprendices del programa de contabilidad y programas afines, pues serán los beneficiados directamente de esta herramienta tecnológica práctica y de fácil acceso, que podrán descargar a sus celulares.   Se utilizarán técnicas de memorización en cada nivel de la APP, como la repetición, el encadenamiento de conceptos, la observación, entre otros, lo que ayudará para que el aprendiz mejore su rendimiento académico y desarrolle las competencias técnicas de los programas.  Lo anterior beneficiará a todos los instructores, toda vez que no gastará tanto tiempo diseñando actividades complementarias o planes de mejoramiento para los aprendices con bajo rendimiento, además podrán ver el avance en los niveles de cada aprendiz y otorgar recompensa por el esfuerzo de cada uno. Se espera que esta herramienta contribuya a disminuir la deserción de los aprendices del programa contabilidad y finanzas, pues se evidencia en los jóvenes dificulta con el aprendizaje tradicional y terminan abandonando la formación."
+                    android:textColor="#FFF"
+                    android:textSize="15dp" />
+                <!--
+                                <TextView
+                                    android:layout_width="122dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Visión"
+                                    android:textColor="#FFF"
+                                    android:textSize="17dp"
+                                    android:layout_marginLeft="12dp"
+                                    android:layout_marginTop="12dp"/>
+
+                                <TextView
+                                    android:layout_width="242dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Posicionar al GIPEP y la Escuela de Gobierno y Políticas Públicas como referentes en el campo de la política exterior, buscando ahondar en los temas relevantes para esta política nacional, así como la necesidad de albergar espacios de discusión dentro de la universidad sobre la política exterior peruana en la Pontificia Universidad Católica del Perú.."
+                                    android:textColor="#FFF"
+                                    android:textSize="15dp"
+                                    android:inputType="textMultiLine"
+                                    android:layout_marginLeft="12dp"
+                                    android:layout_marginTop="9dp"/>-->
 
                 <TextView
                     android:layout_width="122dp"
                     android:layout_height="wrap_content"
-                    android:text="Visión"
-                    android:textColor="#FFF"
-                    android:textSize="17dp"
                     android:layout_marginLeft="12dp"
-                    android:layout_marginTop="12dp"/>
-
-                <TextView
-                    android:layout_width="242dp"
-                    android:layout_height="wrap_content"
-                    android:text="Posicionar al GIPEP y la Escuela de Gobierno y Políticas Públicas como referentes en el campo de la política exterior, buscando ahondar en los temas relevantes para esta política nacional, así como la necesidad de albergar espacios de discusión dentro de la universidad sobre la política exterior peruana en la Pontificia Universidad Católica del Perú.."
-                    android:textColor="#FFF"
-                    android:textSize="15dp"
-                    android:inputType="textMultiLine"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginTop="9dp"/>
-
-                <TextView
-                    android:layout_width="122dp"
-                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
                     android:text="Objetivo"
                     android:textColor="#FFF"
-                    android:textSize="17dp"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginTop="12dp"/>
+                    android:textSize="17dp" />
 
                 <TextView
                     android:layout_width="242dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="9dp"
+                    android:inputType="textMultiLine"
                     android:text="Articular un espacio de discusión y análisis acerca de nuestra política exterior, constituido por profesores y alumnos de Ciencia Política de pregrado, maestría y doctorado.
 Desarrollar investigaciones que contribuyan a la comprensión de nuestra política exterior, de forma tal se pueda incrementar el debate y la reflexión acerca de este tema.
 Fortalecer las capacidades y habilidades de investigación de los alumnos de pregrado y posgrado que integran este grupo.
@@ -89,10 +92,29 @@ Promover la divulgación de investigaciones en materia de política exterior, me
 Posicionar a la Escuela de Gobierno y Políticas Públicas de la PUCP como un referente en política exterior peruana.
 "
                     android:textColor="#FFF"
-                    android:textSize="15dp"
-                    android:inputType="textMultiLine"
+                    android:textSize="15dp" />
+
+
+                <TextView
+                    android:layout_width="122dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="12dp"
-                    android:layout_marginTop="9dp"/>
+                    android:layout_marginTop="12dp"
+                    android:text="Nuestra Historia:"
+                    android:textColor="#FFF"
+                    android:textSize="17dp" />
+
+                <TextView
+                    android:layout_width="242dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="9dp"
+                    android:inputType="textMultiLine"
+                    android:text="Desde el 2013 las instructoras mencionadas plantearon conformaron espacios de talleres extracurriculares para los estudiantes con el fin de reforzar las competencias laborales, debido a la acogida de estos grupos se creó el Semillero de Investigación en Contabilidad y Finanzas-APOLUNIOS (SICF- APOLUNIOS).
+Desde SICF- APOLUNIOS los aprendices…
+"
+                    android:textColor="#FFF"
+                    android:textSize="15dp" />
 
             </LinearLayout>
 
@@ -101,20 +123,20 @@ Posicionar a la Escuela de Gobierno y Políticas Públicas de la PUCP como un re
 
 
         <ImageView
+            android:id="@+id/img4Mision"
             android:layout_width="match_parent"
             android:layout_height="44dp"
-            android:id="@+id/img4Mision"
             android:layout_marginTop="59dp"
-            android:background="@drawable/card_principal"/>
+            android:background="@drawable/card_principal" />
 
 
         <ImageView
             android:id="@+id/img3Mision"
             android:layout_width="match_parent"
             android:layout_height="44dp"
-            android:layout_marginTop="7dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
+            android:layout_marginTop="7dp"
             android:background="@drawable/card_principal" />
 
         <ImageView
@@ -149,9 +171,9 @@ Posicionar a la Escuela de Gobierno y Políticas Públicas de la PUCP como un re
             android:id="@+id/txt1mision"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:layout_marginLeft="5dp"
             android:layout_alignParentTop="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="18dp"
             android:layout_toEndOf="@+id/img2Mision"
             android:text="Informacion App"
             android:textColor="#FFF"

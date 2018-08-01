@@ -14,5 +14,5 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="17dp"
-        android:background="@drawable/photo"/>
+        android:background="@drawable/mascota_pequena_oro"/>
 </RelativeLayout>
