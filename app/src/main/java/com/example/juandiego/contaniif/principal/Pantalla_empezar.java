@@ -413,7 +413,7 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
                 @Override
                 public void onClick(View v) {
                     MyDialogFinal.dismiss();
-                    puente.pantalla(0);
+                    puente.pantalla(1);
                 }
             });
 

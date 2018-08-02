@@ -4,7 +4,7 @@
     android:paddingLeft="10dp"
     android:paddingTop="-15dp"
     android:paddingRight="10dp"
-    android:background="@drawable/degradado"
+    android:background="@drawable/fondo2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/contenedor">

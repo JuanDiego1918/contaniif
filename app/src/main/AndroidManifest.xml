@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/icono_app"
@@ -13,7 +14,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".actividades.SplashScreen"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,13 +38,12 @@
             android:name=".eventos.EventosActivity"
             android:label="@string/title_activity_evento"
             android:theme="@style/AppTheme" />
-        <activity
-            android:name=".videos.VideosActivity" />
+        <activity android:name=".videos.VideosActivity" />
         <activity
             android:name=".videos.Videos"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".actividades.ActivityContenedora"></activity>
     </application>
 
 </manifest>

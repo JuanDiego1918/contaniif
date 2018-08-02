@@ -4,14 +4,17 @@ package com.example.juandiego.contaniif.actividades;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.juandiego.contaniif.R;
@@ -22,6 +25,7 @@ import com.example.juandiego.contaniif.configuracion.PantallaConfiguracion;
 import com.example.juandiego.contaniif.eventos.EventosActivity;
 import com.example.juandiego.contaniif.interfaces.AllFragments;
 import com.example.juandiego.contaniif.interfaces.Puente;
+import com.example.juandiego.contaniif.interfaces.PuentePrincipal;
 import com.example.juandiego.contaniif.mi_rendimiento.MiRendimiento;
 import com.example.juandiego.contaniif.principal.PantallaPrincipal;
 import com.example.juandiego.contaniif.principal.Pantalla_empezar;
@@ -32,10 +36,11 @@ import com.example.juandiego.contaniif.teoria.Pantalla_teoria;
 import com.example.juandiego.contaniif.videos.CategoriasVideosFragment;
 import com.example.juandiego.contaniif.videos.VideosActivity;
 
-public class MainActivity extends AppCompatActivity implements AllFragments, Puente {
+public class MainActivity extends AppCompatActivity implements AllFragments,PuentePrincipal {
     android.support.v4.app.Fragment miFragment = null;
 
     int numerooo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements AllFragments, Pue
         NetworkInfo networkInfo = con.getActiveNetworkInfo();
 
 
-        if (networkInfo != null && networkInfo.isConnected()) {
+       if (networkInfo != null && networkInfo.isConnected()) {
             //miFragment=new Registro();
             // miFragment=new PantallaPrincipal();
             //getSupportFragmentManager().beginTransaction().replace(R.id.content_main,miFragment).commit();
@@ -78,6 +83,11 @@ public class MainActivity extends AppCompatActivity implements AllFragments, Pue
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_ppal, menu);
         return true;
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 
     @Override
@@ -113,7 +123,29 @@ public class MainActivity extends AppCompatActivity implements AllFragments, Pue
         return super.onOptionsItemSelected(item);
     }
 
-    public void pantalla(int cambiar) {
+    @Override
+    public void pantalla(int numero) {
+        if (numero == 3) {
+            Intent intent = new Intent(getApplicationContext(), EventosActivity.class);
+            startActivity(intent);
+        }else{
+            Intent miIntent=new Intent(this,ActivityContenedora.class);
+            Bundle miBundle=new Bundle();
+            miBundle.putInt("numeroPantalla",numero);
+            miIntent.putExtra("pantalla",miBundle);
+            startActivity(miIntent);
+        }
+    }
+
+    @Override
+    public void volver() {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+
+    }
+
+
+  /*  public void pantalla(int cambiar) {
         switch (cambiar) {
             case 0:
                 miFragment = new PantallaPrincipal();
@@ -209,8 +241,5 @@ public class MainActivity extends AppCompatActivity implements AllFragments, Pue
         getSupportFragmentManager().beginTransaction().replace(R.id.content_main, miFragment).commit();
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
+    }*/
 }

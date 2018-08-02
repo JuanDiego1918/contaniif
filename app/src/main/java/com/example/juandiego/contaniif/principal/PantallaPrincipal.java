@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.juandiego.contaniif.R;
 import com.example.juandiego.contaniif.interfaces.Puente;
+import com.example.juandiego.contaniif.interfaces.PuentePrincipal;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,7 +38,7 @@ public class PantallaPrincipal extends Fragment {
     ImageView rendimiento1,rendimiento3,empezar2,videos2,eventos2,teoria2,configuracion2,acercade2;
     TextView rendimiento2,rendimiento4,empezar3,videos3,eventos3,teoria3,configuracion3,acercade3;
 
-    Puente puente;
+    PuentePrincipal puente;
     Fragment miFragment;
     Activity activity;
     public PantallaPrincipal() {
@@ -278,7 +279,7 @@ public class PantallaPrincipal extends Fragment {
 
         if(context instanceof Activity){
             this.activity= (Activity) context;
-            puente=(Puente) this.activity;
+            puente=(PuentePrincipal) this.activity;
         }
 
         //if(context instanceof Activity){

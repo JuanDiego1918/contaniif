@@ -1,5 +1,6 @@
 package com.example.juandiego.contaniif.principal;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
@@ -13,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.juandiego.contaniif.R;
+import com.example.juandiego.contaniif.interfaces.Puente;
+import com.example.juandiego.contaniif.interfaces.PuentePrincipal;
 
 
 /**
@@ -37,6 +40,8 @@ public class PrimerFragment extends Fragment {
     Dialog myDialogempezarPreuntas;
     Button btnEmpexarPreguntas,btnCancelarPreguntas;
     Fragment fragment;
+    Puente puente;
+    Activity activity;
 
     public PrimerFragment() {
         // Required empty public constructor
@@ -89,8 +94,7 @@ public class PrimerFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 myDialogempezarPreuntas.dismiss();
-                fragment=new PantallaPrincipal();
-                getFragmentManager().beginTransaction().replace(R.id.content_main,fragment).commit();
+                puente.pantalla(1);
             }
         });
 
@@ -100,7 +104,7 @@ public class PrimerFragment extends Fragment {
                 myDialogempezarPreuntas.dismiss();
                 fragment=new Pantalla_empezar();
                 //fragment=new Pantalla_empezar_drag();
-                getFragmentManager().beginTransaction().replace(R.id.content_main,fragment).commit();
+                getFragmentManager().beginTransaction().replace(R.id.activityContenedora,fragment).commit();
             }
         });
 
@@ -119,6 +123,11 @@ public class PrimerFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+
+        if(context instanceof Activity){
+            this.activity= (Activity) context;
+            puente=(Puente) this.activity;
+        }
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
