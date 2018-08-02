@@ -119,6 +119,13 @@ public class MiRendimiento extends Fragment {
         comentario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Calendar c = Calendar.getInstance();
+                c.set(Calendar.HOUR_OF_DAY, 0);
+                c.set(Calendar.MINUTE, 0);
+                c.set(Calendar.SECOND, 0);
+                c.getTime();
+                Toast.makeText(getContext(),"Comentario "+c.getTime(),Toast.LENGTH_SHORT).show();
+
                 VentanaEmergente();
             }
         });
@@ -126,13 +133,22 @@ public class MiRendimiento extends Fragment {
     }
 
     private void VentanaEmergente() {
-        Button enviar;
+        Button enviar,cancelar;
         final EditText coment;
 
         myDialogComent.setContentView(R.layout.popup_comentarios);
 
         coment=myDialogComent.findViewById(R.id.comentariotxt);
         enviar = myDialogComent.findViewById(R.id.enviar);
+        cancelar = myDialogComent.findViewById(R.id.btnCancelarComentario);
+
+        cancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialogComent.dismiss();
+            }
+        });
+
         //comentario=coment.getText().toString();
         enviar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -157,12 +173,7 @@ public class MiRendimiento extends Fragment {
     }
     private void enviarDatosComentarios() {
 
-        /*Calendar c = Calendar.getInstance();
-        c.set(Calendar.HOUR_OF_DAY, 0);
-        c.set(Calendar.MINUTE, 0);
-        c.set(Calendar.SECOND, 0);
-        c.getTime();
-        Toast.makeText(getContext(),"Comentario "+c.getTime(),Toast.LENGTH_SHORT).show();*/
+
 
         String url;
         url = "http://"+getContext().getString(R.string.ip2)+"/apolunios/registroComentario.php?";

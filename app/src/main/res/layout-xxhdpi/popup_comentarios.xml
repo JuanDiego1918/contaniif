@@ -17,17 +17,28 @@
         android:layout_marginBottom="40dp"
         android:background="@color/white">
 
-
         <Button
             android:id="@+id/enviar"
-            android:layout_width="215dp"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="36dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="53dp"
+            android:background="@drawable/borde_redondo_boton"
+            android:text="Enviar"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btnCancelarComentario"
+            android:layout_width="200dp"
+            android:layout_height="36dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="13dp"
             android:background="@drawable/borde_redondo_boton"
-            android:text="Enviar"
+            android:text="Cancelar"
             android:textColor="@color/white" />
+
 
         <TextView
             android:id="@+id/tituloComentario"
@@ -48,8 +59,9 @@
 
         <EditText
             android:id="@+id/comentariotxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="190dp"
+            android:layout_marginLeft="25dp"
+            android:layout_height="50dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginTop="110dp"

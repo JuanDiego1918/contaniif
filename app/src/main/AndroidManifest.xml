@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- - para usar la camara desde la App -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- escribir en memoria para guardar las fotos -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -14,8 +17,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".actividades.SplashScreen"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,14 +38,20 @@
 
         <activity
             android:name=".eventos.EventosActivity"
-            android:label="@string/title_activity_evento"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".videos.VideosActivity" />
+            android:label="contaniif"
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".actividades.MainActivity"/>
+        <activity
+            android:name=".videos.VideosActivity"
+            android:parentActivityName=".actividades.ActivityContenedora"/>
         <activity
             android:name=".videos.Videos"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".actividades.ActivityContenedora"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".actividades.ActivityContenedora"
+            android:parentActivityName=".actividades.MainActivity"></activity>
+
     </application>
 
 </manifest>

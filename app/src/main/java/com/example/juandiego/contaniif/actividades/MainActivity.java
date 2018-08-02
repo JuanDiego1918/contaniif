@@ -79,16 +79,17 @@ public class MainActivity extends AppCompatActivity implements AllFragments,Puen
     }
 
     @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_ppal, menu);
         return true;
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -122,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements AllFragments,Puen
 
         return super.onOptionsItemSelected(item);
     }
-
+*/
     @Override
     public void pantalla(int numero) {
         if (numero == 3) {

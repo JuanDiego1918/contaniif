@@ -2,6 +2,7 @@ package com.example.juandiego.contaniif.videos;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -51,8 +52,12 @@ public class VideosActivity extends AppCompatActivity implements Response.Listen
         miBundle=this.getIntent().getExtras();
         request = Volley.newRequestQueue(getApplicationContext());
         cargarWebService();
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+///////////////////////
     }
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_ppal, menu);
@@ -72,7 +77,7 @@ public class VideosActivity extends AppCompatActivity implements Response.Listen
         }
             return super.onOptionsItemSelected(item);
         }
-
+*/
 
     /**
      * initialize youtube player via Fragment and get instance of YoutubePlayer

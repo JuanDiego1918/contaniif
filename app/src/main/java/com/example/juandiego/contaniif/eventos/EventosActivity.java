@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -75,10 +76,14 @@ public class EventosActivity extends AppCompatActivity implements Response.Liste
         recyclerViewNumero=findViewById(R.id.numeroPaginacion);
 
         cargarWebService();
+        ///////////////////////
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+///////////////////////
 
     }
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_ppal, menu);
@@ -99,7 +104,7 @@ public class EventosActivity extends AppCompatActivity implements Response.Liste
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     private void cargarWebService() {
         recyclerViewNumero.setLayoutManager(new LinearLayoutManager(getApplicationContext()));

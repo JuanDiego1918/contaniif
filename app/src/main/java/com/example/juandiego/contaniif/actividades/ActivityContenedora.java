@@ -3,6 +3,7 @@ package com.example.juandiego.contaniif.actividades;
 import android.app.Fragment;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -34,10 +35,24 @@ public class ActivityContenedora extends AppCompatActivity implements AllFragmen
 
         int numeroPantalla = 0;
 
+
         Bundle miBundle = this.getIntent().getBundleExtra("pantalla");
-        numeroPantalla = miBundle.getInt("numeroPantalla");
+        if (miBundle!=null){
+            numeroPantalla = miBundle.getInt("numeroPantalla");
+        }else{
+            miFragment = new CategoriasVideosFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.activityContenedora, miFragment).commit();
+        }
+
+
+        //Toast.makeText(getApplicationContext(), "numero " + numeroPantalla, Toast.LENGTH_SHORT).show();
         cambioPantalla(numeroPantalla);
 
+        ///////////////////////
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+///////////////////////
     }
 
     private void cambioPantalla(int numeroPantalla) {

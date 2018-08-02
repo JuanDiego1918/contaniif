@@ -68,6 +68,55 @@ public class Registro extends Fragment implements Response.Listener<JSONObject>,
     String genero;
     String municipio;
     String departamento;
+
+    boolean seleccionaGenero;
+    boolean seleccionaDepartamento;
+
+    public boolean isSeleccionaImagen() {
+        return seleccionaImagen;
+    }
+
+    public void setSeleccionaImagen(boolean seleccionaImagen) {
+        this.seleccionaImagen = seleccionaImagen;
+    }
+
+    boolean seleccionaImagen;
+    boolean seleccionaMunicipio;
+
+    public boolean isSeleccionaGenero() {
+        return seleccionaGenero;
+    }
+
+    public void setSeleccionaGenero(boolean seleccionaGenero) {
+        this.seleccionaGenero = seleccionaGenero;
+    }
+
+    public boolean isSeleccionaDepartamento() {
+        return seleccionaDepartamento;
+    }
+
+    public void setSeleccionaDepartamento(boolean seleccionaDepartamento) {
+        this.seleccionaDepartamento = seleccionaDepartamento;
+    }
+
+    public boolean isSeleccionaMunicipio() {
+        return seleccionaMunicipio;
+    }
+
+    public void setSeleccionaMunicipio(boolean seleccionaMunicipio) {
+        this.seleccionaMunicipio = seleccionaMunicipio;
+    }
+
+    public boolean isSeleccionaFecha() {
+        return seleccionaFecha;
+    }
+
+    public void setSeleccionaFecha(boolean seleccionaFecha) {
+        this.seleccionaFecha = seleccionaFecha;
+    }
+
+    boolean seleccionaFecha;
+
     int validacionGenero;
     int validacionMunicipio;
     int validacionDepartamento;
@@ -262,7 +311,9 @@ public class Registro extends Fragment implements Response.Listener<JSONObject>,
                     //Toast.makeText(getContext(), "posicion" + getPosicion(), Toast.LENGTH_SHORT).show();
                     cargarListaMunicipios();
                     setValidacionDepartamento(2);
+                    setSeleccionaDepartamento(true);
                 } else {
+                    setSeleccionaDepartamento(false);
                     setValidacionDepartamento(10);
                 }
             }
@@ -286,7 +337,9 @@ public class Registro extends Fragment implements Response.Listener<JSONObject>,
                 if (i != 0) {
                     setGenero(ArrayGenero.get(i));
                     setValidacionGenero(2);
+                    setSeleccionaGenero(true);
                 } else {
+                    setSeleccionaGenero(false);
                     setValidacionGenero(10);
                 }
 
@@ -316,7 +369,13 @@ public class Registro extends Fragment implements Response.Listener<JSONObject>,
         btnRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                registrarUsuarioss();
+                if (campoNombre.getText().equals("") || campoApellido.getText().equals("")|| seleccionaGenero==false || seleccionaDepartamento==false || seleccionaMunicipio==false || seleccionaImagen==false ){
+                    Toast.makeText(getContext(),"Debe llenar todos los campos",Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(getContext(),"Noebe llenar todos los campos",Toast.LENGTH_SHORT).show();
+                    registrarUsuarioss();
+                }
+
             }
         });
         return vista;
@@ -339,15 +398,17 @@ public class Registro extends Fragment implements Response.Listener<JSONObject>,
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (opciones[i].equals("Tomar Foto")){
+                    setSeleccionaImagen(true);
                     abrirCamara();
                 }else{
                     if (opciones[i].equals("Elegir de Galeria")){
-
+                        setSeleccionaImagen(true);
                         Intent intent=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                         intent.setType("image/");
                         startActivityForResult(intent.createChooser(intent,"Seleccione"),COD_SELECCIONA);
                     }else{
                         dialogInterface.dismiss();
+                        setSeleccionaImagen(false);
                     }
                 }
             }
@@ -356,6 +417,7 @@ public class Registro extends Fragment implements Response.Listener<JSONObject>,
     }
 
     private void abrirCamara() {
+        setSeleccionaImagen(true);
         File miFile = new File(Environment.getExternalStorageDirectory(),DIRECTORIO_IMAGEN);
         boolean isCreada = miFile.exists();
         if (isCreada==false){
@@ -495,6 +557,7 @@ public class Registro extends Fragment implements Response.Listener<JSONObject>,
                         if (i!=0){
                             setMunicipio(ArrayMunicipios.get(i));
                             setValidacionMunicipio(2);
+                            setSeleccionaMunicipio(true);
                         }else {
                             setValidacionMunicipio(10);
                         }
@@ -669,3 +732,4 @@ public class Registro extends Fragment implements Response.Listener<JSONObject>,
         void onFragmentInteraction(Uri uri);
     }
 }
+
