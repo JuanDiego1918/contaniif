@@ -36,8 +36,6 @@ public class ActivityContenedora extends AppCompatActivity implements AllFragmen
 
         Bundle miBundle = this.getIntent().getBundleExtra("pantalla");
         numeroPantalla = miBundle.getInt("numeroPantalla");
-
-        Toast.makeText(getApplicationContext(),"numero "+numeroPantalla,Toast.LENGTH_SHORT).show();
         cambioPantalla(numeroPantalla);
 
     }

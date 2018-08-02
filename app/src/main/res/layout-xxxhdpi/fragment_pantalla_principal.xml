@@ -163,7 +163,7 @@
         android:textStyle="bold" />
 
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:id="@+id/vinculoVideos2"
         android:layout_width="45dp"
         android:layout_height="40dp"
@@ -171,7 +171,6 @@
         android:layout_alignTop="@+id/vinculoEmpezar2"
         android:layout_marginEnd="28dp"
         android:src="@drawable/videos" />
-
 
     <TextView
         android:id="@+id/vinculoVideos3"

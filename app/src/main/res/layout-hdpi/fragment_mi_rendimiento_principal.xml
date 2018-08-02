@@ -30,11 +30,13 @@
                 android:background="@drawable/card_principal" >
 
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginRight="20dp"
                     android:paddingTop="5dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/mascota_pequena_feliz" />
+                    android:src="@drawable/puntaje" />
                 <TextView
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
@@ -56,11 +58,13 @@
                 android:background="@drawable/card_principal" >
 
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginRight="20dp"
                     android:paddingTop="5dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/mascota_pequena_feliz" />
+                    android:src="@drawable/canjes" />
                 <TextView
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
@@ -82,11 +86,13 @@
                 android:background="@drawable/card_principal" >
 
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
                     android:paddingTop="5dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/mascota_pequena_feliz" />
+                    android:src="@drawable/activos" />
                 <TextView
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
@@ -107,11 +113,13 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/card_principal" >
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="10dp"
                     android:paddingTop="5dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/mascota_pequena_feliz" />
+                    android:src="@drawable/comentarios" />
                 <TextView
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"

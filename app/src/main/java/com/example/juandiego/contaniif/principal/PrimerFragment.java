@@ -5,9 +5,11 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +40,7 @@ public class PrimerFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     Dialog myDialogempezarPreuntas;
-    Button btnEmpexarPreguntas,btnCancelarPreguntas;
+    Button btnEmpexarPreguntas, btnCancelarPreguntas;
     Fragment fragment;
     Puente puente;
     Activity activity;
@@ -79,8 +81,8 @@ public class PrimerFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View vista = inflater.inflate(R.layout.fragment_primer, container, false);
-                myDialogempezarPreuntas = new Dialog(getContext());
-                showPopup3();
+        myDialogempezarPreuntas = new Dialog(getContext());
+        showPopup3();
         return vista;
 
     }
@@ -102,16 +104,18 @@ public class PrimerFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 myDialogempezarPreuntas.dismiss();
-                fragment=new Pantalla_empezar();
+                fragment = new Pantalla_empezar();
                 //fragment=new Pantalla_empezar_drag();
-                getFragmentManager().beginTransaction().replace(R.id.activityContenedora,fragment).commit();
+                getFragmentManager().beginTransaction().replace(R.id.activityContenedora, fragment).commit();
             }
         });
 
         myDialogempezarPreuntas.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         myDialogempezarPreuntas.show();
 
+
     }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -124,9 +128,9 @@ public class PrimerFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        if(context instanceof Activity){
-            this.activity= (Activity) context;
-            puente=(Puente) this.activity;
+        if (context instanceof Activity) {
+            this.activity = (Activity) context;
+            puente = (Puente) this.activity;
         }
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;

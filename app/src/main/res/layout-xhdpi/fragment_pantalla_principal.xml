@@ -10,6 +10,7 @@
     android:id="@+id/contenedor">
 
     <ImageView
+
         android:layout_width="338dp"
         android:layout_height="130dp"
         android:id="@+id/rendimiento1"
@@ -166,7 +167,7 @@
         android:textStyle="bold" />
 
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:id="@+id/vinculoVideos2"
         android:layout_width="45dp"
         android:layout_height="40dp"
