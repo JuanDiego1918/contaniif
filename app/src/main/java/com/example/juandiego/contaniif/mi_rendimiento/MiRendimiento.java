@@ -2,6 +2,7 @@ package com.example.juandiego.contaniif.mi_rendimiento;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -16,7 +17,18 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.juandiego.contaniif.R;
+
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,9 +47,31 @@ public class MiRendimiento extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    String credenciales;
+    String cojeComentario;
+
+    public String getCojeComentario() {
+        return cojeComentario;
+    }
+
+    public void setCojeComentario(String cojeComentario) {
+        this.cojeComentario = cojeComentario;
+    }
+
+    public String getCredenciales() {
+        return credenciales;
+    }
+
+    public void setCredenciales(String credenciales) {
+        this.credenciales = credenciales;
+    }
 
     Dialog myDialogComent;
     LinearLayout comentario;
+    RequestQueue request;
+    //StringReqsuest stringRequest;
+    StringRequest stringRequest;
+
     private OnFragmentInteractionListener mListener;
 
     public MiRendimiento() {
@@ -76,9 +110,11 @@ public class MiRendimiento extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment}
         View vista=inflater.inflate(R.layout.fragment_mi_rendimiento_principal, container, false);
-
+        cargarCredenciales();
         comentario=vista.findViewById(R.id.comentarios);
         myDialogComent= new Dialog(getContext());
+        request = Volley.newRequestQueue(getContext());
+
 
         comentario.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,13 +137,69 @@ public class MiRendimiento extends Fragment {
         enviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(),"Comentario "+coment.getText().toString(),Toast.LENGTH_SHORT).show();
+                setCojeComentario(coment.getText().toString());
+                //Toast.makeText(getContext(),"Comentario "+coment.getText().toString(),Toast.LENGTH_SHORT).show();
                 myDialogComent.dismiss();
+                enviarDatosComentarios();
             }
         });
 
         myDialogComent.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         myDialogComent.show();
+    }
+
+
+    private void cargarCredenciales() {
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("Credenciales",Context.MODE_PRIVATE);
+        String credenciales = preferences.getString("correo","No existe el valor");
+        setCredenciales(credenciales);
+
+    }
+    private void enviarDatosComentarios() {
+
+        /*Calendar c = Calendar.getInstance();
+        c.set(Calendar.HOUR_OF_DAY, 0);
+        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.SECOND, 0);
+        c.getTime();
+        Toast.makeText(getContext(),"Comentario "+c.getTime(),Toast.LENGTH_SHORT).show();*/
+
+        String url;
+        url = "http://"+getContext().getString(R.string.ip2)+"/apolunios/registroComentario.php?";
+        stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                //progreso.hide();
+                if (response.trim().equalsIgnoreCase("registra")) {
+                    Toast.makeText(getContext(), "Registro de comentario exitoso", Toast.LENGTH_SHORT).show();
+                } else {
+                                     Toast.makeText(getContext(),"Comentario no registrado", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(), "No se pudo registrar el comentario" + error.toString(), Toast.LENGTH_SHORT).show();
+            }
+
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                String idusuario = getCredenciales();
+                String comentario = getCojeComentario();
+                String fechacomentario = "2018-08-01";
+
+                Map<String, String> parametros = new HashMap<>();
+                parametros.put("idusuario", idusuario);
+                parametros.put("comentario", comentario);
+                parametros.put("fechacomentario",fechacomentario);
+                return parametros;
+            }
+        };
+
+        request.add(stringRequest);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
