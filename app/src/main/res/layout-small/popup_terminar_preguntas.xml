@@ -23,21 +23,9 @@
             android:layout_height="36dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="53dp"
+            android:layout_marginBottom="33dp"
             android:background="@drawable/borde_redondo_boton"
             android:text="Enviar"
-            android:textColor="@color/white" />
-
-
-        <Button
-            android:id="@+id/btnCancelarComentario"
-            android:layout_width="200dp"
-            android:layout_height="36dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="13dp"
-            android:background="@drawable/borde_redondo_boton"
-            android:text="Cancelar"
             android:textColor="@color/white" />
 
 
@@ -72,13 +60,13 @@
 
     <ImageView
         android:id="@+id/imagenIzqquierda"
-        android:layout_width="139dp"
-        android:layout_height="100dp"
+        android:layout_width="129dp"
+        android:layout_height="90dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginTop="103dp"
-        android:src="@drawable/mascota_pequena_oro" />
+        android:src="@drawable/comentarios" />
 
 
 

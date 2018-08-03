@@ -72,13 +72,13 @@
 
     <ImageView
         android:id="@+id/imagenIzqquierda"
-        android:layout_width="139dp"
-        android:layout_height="100dp"
+        android:layout_width="129dp"
+        android:layout_height="90dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginTop="103dp"
-        android:src="@drawable/mascota_pequena_oro" />
+        android:src="@drawable/comentarios" />
 
 
 </RelativeLayout>
