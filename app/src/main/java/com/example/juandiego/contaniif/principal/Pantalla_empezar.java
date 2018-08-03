@@ -213,6 +213,7 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
     ArrayList<String> listaSeleccionada;
     int correctoSeleccionMultiple = 0;
     PreguntasVo preguntas;
+    ArrayList<String> listaColores;
 
     public Pantalla_empezar() {
         // Required empty public constructor
@@ -276,15 +277,6 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
                 comparar();
             }
         });
-        listanumero = new ArrayList<>();
-        for (int i = 1; i < 11; i++) {
-            miNumeroVo = new NumeroVo();
-            miNumeroVo.setNumeroPagina(i);
-            listanumero.add(miNumeroVo);
-        }
-
-        PaginacionNumeroAdapter miNumeroAdapter = new PaginacionNumeroAdapter(listanumero, getContext());
-        miRecyclerNumero.setAdapter(miNumeroAdapter);
 
         pregunta = vista.findViewById(R.id.campoPregunta);
         recyclerViewUsuarios = vista.findViewById(R.id.recyclerPreguntasss);
@@ -310,14 +302,29 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
         // miFragment = new FragmentPregunta1();
         // getFragmentManager().beginTransaction().replace(R.id.fragmentPregunta1,miFragment).commit();
 
-
+        listaColores=new ArrayList<>();
+        Bundle todo;
         Bundle miBundle = getArguments();
         if (miBundle != null) {
-            numeroPregunta = miBundle.getInt("numeroPregunta");
+            todo=miBundle.getBundle("Todo");
+            numeroPregunta=todo.getInt("numeroPregunta");
+            listaColores=todo.getStringArrayList("color");
             Toast.makeText(getContext(), "j " + numeroPregunta, Toast.LENGTH_SHORT).show();
         } else {
             numeroPregunta = 0;
         }
+        listanumero = new ArrayList<>();
+        for (int i = 1; i < 11; i++) {
+            miNumeroVo = new NumeroVo();
+            miNumeroVo.setNumeroPagina(i);
+            listanumero.add(miNumeroVo);
+        }
+
+        for (int i=0;i<listaColores.size();i++){
+            listanumero.get(i).setColor(listaColores.get(i));
+        }
+        PaginacionNumeroAdapter miNumeroAdapter = new PaginacionNumeroAdapter(listanumero, getContext());
+        miRecyclerNumero.setAdapter(miNumeroAdapter);
         return vista;
     }
 
@@ -391,16 +398,16 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
     private void revisar(boolean revisar) {
         if (revisar == true) {
           int puntos = puntage;
-
-            Toast.makeText(getContext(), "Tiempo perfecto" + tiempoCapturado + " BD " + preguntas.getTiempoDemora(), Toast.LENGTH_SHORT).show();
             if (tiempoCapturado >preguntas.getTiempoDemora()) {
                 puntos = (puntage*75)/100;
             }
-            enviarDatosPuntaje(puntos);
-
+            //enviarDatosPuntaje(puntos);
+            listaColores.add("#45cc28");
+        }else{
+            listaColores.add("#ed2024");
         }
-        if (numeroPregunta <= 10) {
-            puente.reinciar(numeroPregunta);
+        if (numeroPregunta < 10) {
+            puente.reinciar(numeroPregunta,1,listaColores);
         } else {
             Button finalizar;
 

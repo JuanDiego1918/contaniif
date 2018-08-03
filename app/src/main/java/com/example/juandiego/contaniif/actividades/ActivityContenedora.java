@@ -13,6 +13,7 @@ import com.example.juandiego.contaniif.acercade.AcercaDeNosotros;
 import com.example.juandiego.contaniif.acercade.MisionVision;
 import com.example.juandiego.contaniif.acercade.Pantalla_acercade;
 import com.example.juandiego.contaniif.configuracion.PantallaConfiguracion;
+import com.example.juandiego.contaniif.entidades.NumeroVo;
 import com.example.juandiego.contaniif.eventos.EventosActivity;
 import com.example.juandiego.contaniif.interfaces.AllFragments;
 import com.example.juandiego.contaniif.interfaces.Puente;
@@ -23,6 +24,8 @@ import com.example.juandiego.contaniif.principal.PrimerFragment;
 import com.example.juandiego.contaniif.teoria.Pantalla_teoria;
 import com.example.juandiego.contaniif.videos.CategoriasVideosFragment;
 import com.example.juandiego.contaniif.videos.VideosActivity;
+
+import java.util.ArrayList;
 
 public class ActivityContenedora extends AppCompatActivity implements AllFragments, Puente {
 
@@ -37,9 +40,9 @@ public class ActivityContenedora extends AppCompatActivity implements AllFragmen
 
 
         Bundle miBundle = this.getIntent().getBundleExtra("pantalla");
-        if (miBundle!=null){
+        if (miBundle != null) {
             numeroPantalla = miBundle.getInt("numeroPantalla");
-        }else{
+        } else {
             miFragment = new CategoriasVideosFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.activityContenedora, miFragment).commit();
         }
@@ -87,7 +90,7 @@ public class ActivityContenedora extends AppCompatActivity implements AllFragmen
 
     @Override
     public void pantalla(int numero) {
-        switch (numero){
+        switch (numero) {
             case 1:
                 finish();
                 break;
@@ -133,10 +136,13 @@ public class ActivityContenedora extends AppCompatActivity implements AllFragmen
     }
 
     @Override
-    public void reinciar(int numeroPregunta) {
-        Bundle miBundle = new Bundle();
+    public void reinciar(int numeroPregunta, int tipo, ArrayList<String> lista) {
 
-        miBundle.putInt("numeroPregunta", numeroPregunta);
+        Bundle datos = new Bundle();
+        Bundle miBundle=new Bundle();
+        datos.putInt("numeroPregunta", numeroPregunta);
+        datos.putStringArrayList("color",lista);
+        miBundle.putBundle("Todo",datos);
         miFragment = new Pantalla_empezar();
         miFragment.setArguments(miBundle);
         getSupportFragmentManager().beginTransaction().replace(R.id.activityContenedora, miFragment).commit();
