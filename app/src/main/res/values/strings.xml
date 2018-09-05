@@ -7,6 +7,7 @@
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_evento">EventoActivity</string>
     <string name="ip">www.contaniif.club/movil/</string>
+    <string name="ipImg">www.contaniif.club/img/eventos/</string>
     <!--<string name="ip">www.trepadoresquindio.com/contabilidad/movil/</string>-->
     <string name="ip2">10.71.128.47</string>
     <string name="title_activity_eventos">EventosActivity</string>

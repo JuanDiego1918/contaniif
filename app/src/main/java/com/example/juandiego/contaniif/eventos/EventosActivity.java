@@ -210,9 +210,9 @@ public class EventosActivity extends AppCompatActivity implements Response.Liste
         //hola grupo
 
         private void mostrarImg(String rutaImagen) {
-            String ip=getContext().getString(R.string.ip);
+            String ip=getContext().getString(R.string.ipImg);
 
-            final String urlImagen="http://"+ip+rutaImagen;
+            final String urlImagen="http://"+ip+rutaImagen+".jpg";
             ImageRequest imageRequest=new ImageRequest(urlImagen, new Response.Listener<Bitmap>() {
                 @Override
                 public void onResponse(Bitmap response) {

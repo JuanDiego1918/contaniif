@@ -363,9 +363,10 @@ public class Pantalla_empezar extends Fragment implements Response.Listener<JSON
         dialog.setMessage("Cargando..");
 //        dialog.show();
 
-        String ip = getContext().getString(R.string.ip2);
+        String ip = getContext().getString(R.string.ip);
         //String url = "http://" + ip + "wsPreguntasTipo1.php";
-        String url = "http://" + ip + "/apolunios/wsConsultaPreguntaPrueba1.php";
+        //String url = "http://" + ip + "/apolunios/wsConsultaPreguntaPrueba1.php";
+        String url = "http://" + ip + "/wsConsultaPreguntaPrueba1.php";
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
 //        request.add(jsonObjectRequest);
         VolleySingleton.getIntanciaVolley(getContext()).addToRequestQueue(jsonObjectRequest);
