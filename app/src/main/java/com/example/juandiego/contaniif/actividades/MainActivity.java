@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements AllFragments,Puen
     private void cargarCredenciales() {
         SharedPreferences preferences = getSharedPreferences("Credenciales", Context.MODE_PRIVATE);
         String credenciales = preferences.getString("correo", "No existe el valor");
-        if (credenciales != "No existe el valor") {
+        if (credenciales == "No existe el valor") {
             miFragment = new PantallaPrincipal();
             getSupportFragmentManager().beginTransaction().replace(R.id.content_main, miFragment).commit();
         } else {
