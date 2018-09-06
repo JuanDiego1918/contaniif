@@ -137,7 +137,6 @@ public class EventosActivity extends AppCompatActivity implements Response.Liste
                 miEventoVo.setImage(jsonObject.optString("id"));
                 listaEventos.add(miEventoVo);
                 listaNumero.add(miNumeroVo);
-                //Toast.makeText(getApplicationContext(),"Desc "+jsonObject.optString("id"),Toast.LENGTH_SHORT).show();
             }
             // Set up the ViewPager with the sections adapter.
             mViewPager.setAdapter(mSectionsPagerAdapter);
